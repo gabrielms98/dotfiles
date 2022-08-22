@@ -127,3 +127,5 @@ require("lspconfig").emmet_ls.setup(config({
 }))
 
 require'lspconfig'.eslint.setup{}
+
+require("lspconfig").html.setup(config({}))

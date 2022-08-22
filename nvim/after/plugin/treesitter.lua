@@ -1,5 +1,5 @@
 require('nvim-treesitter.configs').setup({
-    ensure_installed = { "c", "cpp", "javascript", "python", "rust", "lua", "typescript", },
+    ensure_installed = { "c", "cpp", "javascript", "python", "rust", "lua", "typescript", "html", "css", "scss" },
     sync_install = false,
 
     highlight = {
@@ -9,7 +9,7 @@ require('nvim-treesitter.configs').setup({
 
   rainbow = {
     enable = true,
-    extended_mode = true,
+    extended_mode = false,
     max_file_lines = nil,
   }
 })
