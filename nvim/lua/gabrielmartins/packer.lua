@@ -63,5 +63,5 @@ return require("packer").startup(function()
 
     -- Emmet
     use("mattn/emmet-vim")
-
 end)
+

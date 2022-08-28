@@ -105,9 +105,7 @@ require("lspconfig").gopls.setup(config({
 }))
 
 -- who even uses this?
-require("lspconfig").rust_analyzer.setup(config({
-	cmd = { "rustup", "run", "nightly", "rust-analyzer" },
-}))
+require("lspconfig").rust_analyzer.setup(config())
 
 require("lspconfig").tailwindcss.setup(config())
 
@@ -126,6 +124,8 @@ require("lspconfig").emmet_ls.setup(config({
     }
 }))
 
-require'lspconfig'.eslint.setup{}
+require"lspconfig".eslint.setup(config())
 
-require("lspconfig").html.setup(config({}))
+require("lspconfig").html.setup(config())
+
+require("lspconfig").angularls.setup(config())

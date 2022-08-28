@@ -18,6 +18,9 @@ vim.g.loaded_perl_provider = 0
 
 vim.opt.clipboard:append({ "unnamedplus" })
 
+vim.g.neoformat_try_node_exe = 1
+vim.g.neoformat_try_formatprg = 1
+
 autocmd('TextYankPost', {
     group = yank_group,
     pattern = '*',
@@ -49,3 +52,9 @@ autocmd({"BufWritePre"}, {
     command = "EslintFixAll"
 })
 
+vim.g.user_emmet_install_global = 0
+autocmd({"FileType"}, {
+    group = GabrielGroup,
+    pattern = "*.{html,css,scss}",
+    command = "EmmetInstall"
+})
