@@ -32,3 +32,5 @@ vim.opt.cmdheight = 1
 vim.opt.shortmess:append("c")
 
 vim.g.mapleader = " "
+vim.opt.splitbelow = true
+vim.opt.splitright = true

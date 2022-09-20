@@ -22,7 +22,9 @@ require("telescope").setup({
 			},
 		},
         file_ignore_patterns = {
-            "database_scripts",
+            "databe_scripts/*",
+            "data/*",
+            "data_scripts/*",
         }
 	},
     --[[

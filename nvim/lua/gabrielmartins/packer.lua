@@ -60,8 +60,5 @@ return require("packer").startup(function()
 
     -- Maks
     use("tversteeg/registers.nvim")
-
-    -- Emmet
-    use("mattn/emmet-vim")
 end)
 

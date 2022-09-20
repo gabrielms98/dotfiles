@@ -107,13 +107,11 @@ require("lspconfig").gopls.setup(config({
 -- who even uses this?
 require("lspconfig").rust_analyzer.setup(config())
 
-require("lspconfig").tailwindcss.setup(config())
-
 require("lspconfig").cssmodules_ls.setup(config())
 
 
 require("lspconfig").emmet_ls.setup(config({
-    filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+    filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "htmldjango" },
     init_options = {
       html = {
         options = {
