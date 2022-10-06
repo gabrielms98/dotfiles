@@ -19,8 +19,7 @@ cmp.setup({
 		["<C-h>"] = cmp.mapping.complete(),
 	}),
 
-    formatting = {
-        format = lspkind.cmp_format({
+    formatting = { format = lspkind.cmp_format({
             mode = "symbol",
             maxwidth = 50,
             before = function (entry, vim_item)
@@ -104,8 +103,27 @@ require("lspconfig").gopls.setup(config({
 	},
 }))
 
--- who even uses this?
-require("lspconfig").rust_analyzer.setup(config())
+require("lspconfig").rust_analyzer.setup(config({
+    on_attach=on_attach,
+    settings = {
+        ["rust-analyzer"] = {
+            imports = {
+                granularity = {
+                    group = "module",
+                },
+                prefix = "self",
+            },
+            cargo = {
+                buildScripts = {
+                    enable = true,
+                },
+            },
+            procMacro = {
+                enable = true
+            },
+        }
+    }
+}))
 
 require("lspconfig").cssmodules_ls.setup(config())
 
