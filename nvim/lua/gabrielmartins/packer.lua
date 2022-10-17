@@ -57,6 +57,7 @@ return require("packer").startup(function()
     use({ "lambdalisue/fern.vim", branch = "main" })
     use("lambdalisue/fern-renderer-nerdfont.vim")
     use("lambdalisue/fern-hijack.vim")
+    use("antoinemadec/FixCursorHold.nvim")
 
     -- Maks
     use("tversteeg/registers.nvim")

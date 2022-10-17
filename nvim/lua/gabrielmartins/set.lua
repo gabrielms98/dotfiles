@@ -34,3 +34,6 @@ vim.opt.shortmess:append("c")
 vim.g.mapleader = " "
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
