@@ -2,6 +2,7 @@ vim.opt.number = false
 vim.opt.relativenumber = true
 vim.opt.nu = true
 
+vim.opt.cursorline = true
 vim.opt.autoindent = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -18,6 +19,7 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
 vim.opt.swapfile = false
+vim.opt.guicursor="i:block"
 
 -- Ignore files
 vim.opt.wildignore:append("*.pyc")
@@ -37,3 +39,5 @@ vim.opt.splitright = true
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+vim.opt.undofile = true

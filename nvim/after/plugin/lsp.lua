@@ -20,11 +20,15 @@ cmp.setup({
 	}),
 
     formatting = { format = lspkind.cmp_format({
-            mode = "symbol",
+            mode = "symbol_text",
             maxwidth = 50,
-            before = function (entry, vim_item)
-                return vim_item
-            end
+            menu = {
+                cmp_tabnine = "[TN]",
+                nvim_lsp = "[LSP]",
+                luasnip = "[LUA]",
+                buffer = "[BUF]",
+                path = "[PATH]",
+            }
         })
     },
 
@@ -33,6 +37,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
+        { name = 'path' }
 	},
 
 })

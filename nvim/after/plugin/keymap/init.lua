@@ -27,3 +27,4 @@ nnoremap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 -- Tmux session maker
 nnoremap("<C-f>", "<cmd>silent !tmux neww ~/.config/tmux-finder.sh<CR>")
+inoremap("jj", "<Esc>")

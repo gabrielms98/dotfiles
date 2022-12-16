@@ -13,7 +13,7 @@ vim.g.gitblame_enabled = 0
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
-vim.g.python3_host_prog = "/opt/homebrew/bin/python3.8"
+vim.g.python3_host_prog = "/usr/bin/python3"
 vim.g.loaded_perl_provider = 0
 
 vim.opt.clipboard:append({ "unnamedplus" })
