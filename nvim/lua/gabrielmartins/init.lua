@@ -1,23 +1,15 @@
-local augroup = vim.api.nvim_create_augroup
-GabrielGroup = augroup("GabrielMartins", {})
-
+require("gabrielmartins.remap")
 require("gabrielmartins.set")
-require("gabrielmartins.packer")
-require("gabrielmartins.neogit")
 
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-vim.g.gitblame_enabled = 0
+local augroup = vim.api.nvim_create_augroup
+local ThePrimeagenGroup = augroup('ThePrimeagen', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
-vim.g.python3_host_prog = "/usr/bin/python3"
-vim.g.loaded_perl_provider = 0
-
-vim.opt.clipboard:append({ "unnamedplus" })
-
+function R(name)
+    require("plenary.reload").reload_module(name)
+end
 
 autocmd('TextYankPost', {
     group = yank_group,
@@ -30,22 +22,12 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufEnter", "BufWinEnter", "TabEnter"}, {
-    group = GabrielGroup,
-    pattern = "*.rs",
-    callback = function()
-        require("lsp_extensions").inlay_hints{}
-    end
-})
-
 autocmd({"BufWritePre"}, {
-    group = GabrielGroup,
+    group = ThePrimeagenGroup,
     pattern = "*",
     command = "%s/\\s\\+$//e",
 })
 
-autocmd({"BufWritePre"}, {
-    group = GabrielGroup,
-    pattern = "*.{js,jsx,ts,tsx}",
-    command = "EslintFixAll"
-})
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25

@@ -1,13 +1,10 @@
-vim.g.gabrielmartins_colorscheme = "gruvbox"
+function Colors(color)
+	color = color or "gruvbox"
 
-function ColorMyPencils()
-    vim.g.gruvbox_contrast_dark = 'hard'
-    vim.g.tokyonight_transparent_sidebar = true
-    vim.g.tokyonight_transparent = true
-    vim.g.gruvbox_invert_selection = '0'
-    vim.opt.background = "dark"
+	vim.cmd.colorscheme(color)
 
-    vim.cmd("colorscheme " .. vim.g.gabrielmartins_colorscheme)
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none"})
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none"})
 
     local hl = function(thing, opts)
         vim.api.nvim_set_hl(0, thing, opts)
@@ -37,7 +34,7 @@ function ColorMyPencils()
     hl("netrwDir", {
         fg = "#5eacd3"
     })
-
 end
 
-ColorMyPencils()
+Colors()
+

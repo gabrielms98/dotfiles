@@ -1,17 +1,22 @@
-require('nvim-treesitter.configs').setup({
-    ensure_installed = { "c", "cpp", "javascript", "python", "rust", "lua", "typescript", "html", "css", "scss" },
-    sync_install = false,
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the four listed parsers should always be installed)
+  ensure_installed = { "help", "javascript", "typescript", "html", "python", "cpp", "c", "lua", "vim", "rust" },
 
-    highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-    },
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
 
-  rainbow = {
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = true,
+
+  highlight = {
+    -- `false` will disable the whole extension
     enable = true,
-    extended_mode = false,
-    max_file_lines = nil,
-  }
-})
 
-
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
