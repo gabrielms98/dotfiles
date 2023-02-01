@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["cmp-tabnine"] = {
+    loaded = true,
+    path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
+    url = "https://github.com/tzachar/cmp-tabnine"
+  },
   cmp_luasnip = {
     loaded = true,
     path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
@@ -109,10 +114,15 @@ _G.packer_plugins = {
     path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
-  gruvbox = {
+  ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/gruvbox-community/gruvbox"
+    path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
   },
   harpoon = {
     loaded = true,
@@ -164,6 +174,11 @@ _G.packer_plugins = {
     path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
     url = "https://github.com/romgrk/nvim-treesitter-context"
   },
+  ["nvim-ts-rainbow"] = {
+    loaded = true,
+    path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
+    url = "https://github.com/p00f/nvim-ts-rainbow"
+  },
   ["nvim-web-devicons"] = {
     loaded = false,
     needs_bufread = false,
@@ -194,6 +209,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-sleuth"] = {
+    loaded = true,
+    path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/vim-sleuth",
+    url = "https://github.com/tpope/vim-sleuth"
   }
 }
 
