@@ -50,6 +50,7 @@ return require("packer").startup(
             }
         }
         use("sbdchd/neoformat")
+        use("ray-x/lsp_signature.nvim")
 
         use(
             {
@@ -62,6 +63,10 @@ return require("packer").startup(
 
         use("lewis6991/gitsigns.nvim")
 
-        use("plugin:prettier/recommended")
+        use("github/copilot.vim")
+
+        use("tpope/vim-commentary")
+
+        use("kdheepak/lazygit.nvim")
     end
 )

@@ -125,9 +125,20 @@ lsp.setup_nvim_cmp(
             {name = "luasnip"},
             {name = "buffer"},
             {name = "path"}
-        }
+        },
+        mapping = lsp.defaults.cmp_mappings(
+            {
+                -- disable completion with tab
+                ["<Tab>"] = vim.NIL,
+                ["<S-Tab>"] = vim.NIL,
+                -- disable confirm with Enter key
+                ["<CR>"] = vim.NIL
+            }
+        )
     }
 )
+
+require("lsp_signature").setup()
 
 lsp.setup()
 
