@@ -13,7 +13,7 @@ vim.opt.smartindent = true
 
 vim.opt.mouse = "a"
 vim.opt.ma = true
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard:append("unnamedplus")
 vim.opt.wrap = false
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
