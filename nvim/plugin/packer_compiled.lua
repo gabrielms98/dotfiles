@@ -104,11 +104,6 @@ _G.packer_plugins = {
     path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
-  ["cmp-tabnine"] = {
-    loaded = true,
-    path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/cmp-tabnine",
-    url = "https://github.com/tzachar/cmp-tabnine"
-  },
   cmp_luasnip = {
     loaded = true,
     path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
@@ -229,6 +224,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-mypy"] = {
+    loaded = true,
+    path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/vim-mypy",
+    url = "https://github.com/integralist/vim-mypy"
   },
   ["vim-sleuth"] = {
     loaded = true,

@@ -46,11 +46,11 @@ return require("packer").startup(
                 -- Snippets
                 {"L3MON4D3/LuaSnip"}, -- Required
                 {"rafamadriz/friendly-snippets"}, -- Optional
-                {"tzachar/cmp-tabnine", run = "./install.sh"}
             }
         }
         use("sbdchd/neoformat")
         use("ray-x/lsp_signature.nvim")
+        use("integralist/vim-mypy")
 
         use(
             {

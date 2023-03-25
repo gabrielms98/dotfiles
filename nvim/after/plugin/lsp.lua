@@ -17,12 +17,30 @@ lsp.configure(
     }
 )
 
+lsp.configure(
+    "pyright",
+    {
+        settings = {
+            python = {
+                pythonPath = "python3",
+                analysis = {
+                    typeCheckingMode = "basic",
+                    autoSearchPaths = true,
+                    diagnosticMode = "workspace",
+                    useLibraryCodeForTypes = true
+                }
+            }
+        }
+    }
+)
+
 lsp.ensure_installed(
     {
         "tsserver",
         "eslint",
         "rust_analyzer",
-        "pyright"
+        "pyright",
+        "pylsp",
     }
 )
 
@@ -106,21 +124,9 @@ lsp.on_attach(
     end
 )
 
-local tabnine = require("cmp_tabnine.config")
-tabnine:setup(
-    {
-        max_lines = 1000,
-        max_num_results = 20,
-        sort = true,
-        run_on_every_keystroke = true,
-        snippet_placeholder = ".."
-    }
-)
-
 lsp.setup_nvim_cmp(
     {
         sources = {
-            {name = "cmp_tabnine"},
             {name = "nvim_lsp"},
             {name = "luasnip"},
             {name = "buffer"},
