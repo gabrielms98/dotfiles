@@ -48,5 +48,3 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.showmatch = false
-
-vim.g.netrw_localrmdir = "rm -r"

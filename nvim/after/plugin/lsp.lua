@@ -40,7 +40,7 @@ lsp.ensure_installed(
         "eslint",
         "rust_analyzer",
         "pyright",
-        "pylsp",
+        "pylsp"
     }
 )
 
