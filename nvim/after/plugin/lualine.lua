@@ -122,7 +122,9 @@ ins_left {
 ins_left {
     "filename",
     cond = conditions.buffer_not_empty,
-    color = {fg = colors.magenta, gui = "bold"}
+    color = {fg = colors.magenta, gui = "bold"},
+    path = 4,
+    shorting_traget = 40
 }
 
 ins_left {"location"}
@@ -155,6 +157,11 @@ ins_left {
 --   cond = conditions.hide_in_width,
 --   color = { fg = colors.green, gui = 'bold' },
 -- }
+
+ins_right {
+    "filetype",
+    color = {fg = colors.violet, gui = "bold"}
+}
 
 ins_right {
     "branch",

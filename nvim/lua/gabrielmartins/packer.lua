@@ -45,7 +45,7 @@ return require("packer").startup(
                 {"hrsh7th/cmp-nvim-lua"}, -- Optional
                 -- Snippets
                 {"L3MON4D3/LuaSnip"}, -- Required
-                {"rafamadriz/friendly-snippets"}, -- Optional
+                {"rafamadriz/friendly-snippets"} -- Optional
             }
         }
         use("sbdchd/neoformat")
@@ -68,5 +68,7 @@ return require("packer").startup(
         use("tpope/vim-commentary")
 
         use("kdheepak/lazygit.nvim")
+
+        use("HiPhish/jinja.vim")
     end
 )
