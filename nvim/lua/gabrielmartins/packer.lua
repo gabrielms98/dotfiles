@@ -70,5 +70,12 @@ return require("packer").startup(
         use("kdheepak/lazygit.nvim")
 
         use("HiPhish/jinja.vim")
+
+        use {
+            "stevearc/oil.nvim",
+            config = function()
+                require("oil").setup()
+            end
+        }
     end
 )
