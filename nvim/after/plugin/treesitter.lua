@@ -1,4 +1,5 @@
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+
 parser_config.jinja2 = {
     install_info = {
         url = "/Users/gabrielmartins/Documents/git/tree-sitter-jinja2",
