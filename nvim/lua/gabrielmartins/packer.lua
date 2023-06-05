@@ -51,6 +51,7 @@ return require("packer").startup(
         use("sbdchd/neoformat")
         use("ray-x/lsp_signature.nvim")
         use("integralist/vim-mypy")
+        use("jose-elias-alvarez/null-ls.nvim")
 
         use(
             {
@@ -70,12 +71,5 @@ return require("packer").startup(
         use("kdheepak/lazygit.nvim")
 
         use("HiPhish/jinja.vim")
-
-        use {
-            "stevearc/oil.nvim",
-            config = function()
-                require("oil").setup()
-            end
-        }
     end
 )

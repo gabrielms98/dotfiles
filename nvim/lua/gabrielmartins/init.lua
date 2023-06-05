@@ -2,7 +2,7 @@ require("gabrielmartins.remap")
 require("gabrielmartins.set")
 
 local augroup = vim.api.nvim_create_augroup
-local ThePrimeagenGroup = augroup('ThePrimeagen', {})
+local GabrielGroup = augroup('ThePrimeagen', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
@@ -23,7 +23,7 @@ autocmd('TextYankPost', {
 })
 
 autocmd({"BufWritePre"}, {
-    group = ThePrimeagenGroup,
+    group = GabrielGroup,
     pattern = "*",
     command = "%s/\\s\\+$//e",
 })
@@ -31,5 +31,6 @@ autocmd({"BufWritePre"}, {
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+vim.g.netrw_localrmdir = "rm -r"
 
 vim.g.python3_host_prog = "/opt/homebrew/bin/python3"

@@ -8,26 +8,9 @@ lsp.configure(
             pylsp = {
                 plugins = {
                     pycodestyle = {
-                        ignore = {"W391"},
+                        ignore = {"W391", "W503", "E203"},
                         maxLineLength = 120
                     }
-                }
-            }
-        }
-    }
-)
-
-lsp.configure(
-    "pyright",
-    {
-        settings = {
-            python = {
-                pythonPath = "python3",
-                analysis = {
-                    typeCheckingMode = "basic",
-                    autoSearchPaths = true,
-                    diagnosticMode = "workspace",
-                    useLibraryCodeForTypes = true
                 }
             }
         }
@@ -39,8 +22,7 @@ lsp.ensure_installed(
         "tsserver",
         "eslint",
         "rust_analyzer",
-        "pyright",
-        "pylsp"
+        "pylsp",
     }
 )
 
