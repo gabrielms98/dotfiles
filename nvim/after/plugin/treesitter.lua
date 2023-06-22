@@ -1,16 +1,16 @@
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+-- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 
-parser_config.jinja2 = {
-    install_info = {
-        url = "/Users/gabrielmartins/Documents/git/tree-sitter-jinja2",
-        files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
-        -- optional entries:
-        branch = "master", -- default branch in case of git repo if different from master
-        generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-        requires_generate_from_grammar = false -- if folder contains pre-generated src/parser.c
-    },
-    filetype = "htmldjango" -- if filetype does not match the parser name
-}
+-- parser_config.jinja2 = {
+--     install_info = {
+--         url = "/Users/gabrielmartins/Documents/git/tree-sitter-jinja2",
+--         files = {"src/parser.c"}, -- note that some parsers also require src/scanner.c or src/scanner.cc
+--         -- optional entries:
+--         branch = "master", -- default branch in case of git repo if different from master
+--         generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+--         requires_generate_from_grammar = false -- if folder contains pre-generated src/parser.c
+--     },
+--     filetype = "htmldjango" -- if filetype does not match the parser name
+-- }
 
 require("nvim-treesitter.configs").setup(
     {

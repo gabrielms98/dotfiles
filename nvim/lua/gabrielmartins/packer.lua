@@ -71,5 +71,11 @@ return require("packer").startup(
         use("kdheepak/lazygit.nvim")
 
         use("HiPhish/jinja.vim")
+        use(
+            {
+                "SmiteshP/nvim-gps",
+                requires = "nvim-treesitter/nvim-treesitter"
+            }
+        )
     end
 )

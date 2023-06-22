@@ -184,6 +184,11 @@ _G.packer_plugins = {
     path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/yioneko/nvim-cmp"
   },
+  ["nvim-gps"] = {
+    loaded = true,
+    path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/nvim-gps",
+    url = "https://github.com/SmiteshP/nvim-gps"
+  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/Users/gabrielmartins/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
