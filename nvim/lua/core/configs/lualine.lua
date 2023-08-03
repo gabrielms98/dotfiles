@@ -2,7 +2,6 @@
 -- Author: shadmansaleh
 -- Credit: glepnir
 local lualine = require("lualine")
-local gps = require("nvim-gps")
 
 -- Color table for highlights
 -- stylua: ignore
