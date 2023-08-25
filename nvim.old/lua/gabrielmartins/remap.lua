@@ -26,4 +26,4 @@ vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left>
 vim.keymap.set("n", "<leader>nft", ":Neoformat<CR>")
 
 vim.keymap.set("n", "<C-b>", "<cmd>silent !tmux neww ~/.config/tmux-finder.sh<CR>")
-vim.keymap.set("n", "<leade>gs", "<cmd>silent lazygit<CR>")
+vim.keymap.set("n", "<leader>gs", "<cmd>silent lazygit<CR>")
