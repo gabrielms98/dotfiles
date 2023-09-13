@@ -68,9 +68,6 @@ require("lazy").setup(
     {
         -- NOTE: First, some plugins that don't require any configuration
 
-        -- Git related plugins
-        "tpope/vim-fugitive",
-        "tpope/vim-rhubarb",
         -- Detect tabstop and shiftwidth automatically
         "tpope/vim-sleuth",
         -- NOTE: This is where your plugins related to LSP can be installed.
@@ -102,8 +99,6 @@ require("lazy").setup(
                 "rafamadriz/friendly-snippets"
             }
         },
-        -- Useful plugin to show you pending keybinds.
-        {"folke/which-key.nvim", opts = {}},
         {
             -- Adds git related signs to the gutter, as well as utilities for managing changes
             "lewis6991/gitsigns.nvim",
@@ -191,16 +186,6 @@ require("lazy").setup(
                 }
             }
         },
-        {
-            -- Add indentation guides even on blank lines
-            "lukas-reineke/indent-blankline.nvim",
-            -- Enable `lukas-reineke/indent-blankline.nvim`
-            -- See `:help indent_blankline.txt`
-            opts = {
-                char = "┊",
-                show_trailing_blankline_indent = false
-            }
-        },
         -- "gc" to comment visual regions/lines
         {"numToStr/Comment.nvim", opts = {}},
         -- Fuzzy Finder (files, lsp, etc)
@@ -268,6 +253,11 @@ vim.o.hlsearch = false
 vim.wo.number = true
 vim.opt.relativenumber = true
 vim.opt.nu = true
+vim.opt.scrolloff = 8
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.shiftround = true
+vim.opt.expandtab = true
 
 -- Enable mouse mode
 vim.o.mouse = "a"
@@ -286,6 +276,7 @@ vim.o.undofile = true
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.smarttab = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = "yes"
@@ -295,9 +286,8 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = "menu,menuone,noselect"
 
--- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
 -- [[ Basic Keymaps ]]
@@ -322,6 +312,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("n", "<C-b>", "<cmd>silent !tmux neww ~/.config/tmux-finder.sh<CR>")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -386,7 +377,7 @@ require("nvim-treesitter.configs").setup {
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
     highlight = {enable = true},
-    indent = {enable = true},
+    -- indent = {enable = true},
     incremental_selection = {
         enable = true,
         keymaps = {
@@ -513,52 +504,35 @@ local luasnip = require "luasnip"
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.config.setup {}
 
-cmp.setup {
-    snippet = {
-        expand = function(args)
-            luasnip.lsp_expand(args.body)
-        end
-    },
-    mapping = cmp.mapping.preset.insert {
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete {},
-        ["<CR>"] = cmp.mapping.confirm {
-            behavior = cmp.ConfirmBehavior.Replace,
-            select = true
+cmp.setup(
+    {
+        snippet = {
+            expand = function(args)
+                luasnip.lsp_expand(args.body)
+            end
         },
-        ["<Tab>"] = cmp.mapping(
-            function(fallback)
-                if cmp.visible() then
-                    cmp.select_next_item()
-                elseif luasnip.expand_or_locally_jumpable() then
-                    luasnip.expand_or_jump()
-                else
-                    fallback()
-                end
-            end,
-            {"i", "s"}
-        ),
-        ["<S-Tab>"] = cmp.mapping(
-            function(fallback)
-                if cmp.visible() then
-                    cmp.select_prev_item()
-                elseif luasnip.locally_jumpable(-1) then
-                    luasnip.jump(-1)
-                else
-                    fallback()
-                end
-            end,
-            {"i", "s"}
-        )
-    },
-    sources = {
-        {name = "nvim_lsp"},
-        {name = "luasnip"}
+        mapping = cmp.mapping.preset.insert {
+            ["<C-n>"] = cmp.mapping.select_next_item(),
+            ["<C-p>"] = cmp.mapping.select_prev_item(),
+            ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+            ["<C-f>"] = cmp.mapping.scroll_docs(4),
+            ["<C-Space>"] = cmp.mapping.complete {},
+            ["<CR>"] = vim.NIL,
+            ["<Tab>"] = vim.NIL,
+            ["<S-Tab>"] = vim.NIL,
+            ["<C-y>"] = cmp.mapping.confirm {
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = true
+            }
+        },
+        sources = {
+            {name = "nvim_lsp"},
+            {name = "luasnip"},
+            {name = "path"},
+            {name = "buffer"}
+        }
     }
-}
+)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
