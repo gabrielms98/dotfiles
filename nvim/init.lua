@@ -337,6 +337,12 @@ require("telescope").setup {
                 ["<C-u>"] = false,
                 ["<C-d>"] = false
             }
+        },
+        file_ignore_patterns = {
+            "node%_modules/*",
+            "data/*",
+            "data_scripts/*",
+            "database_scripts/*"
         }
     }
 }
@@ -349,7 +355,7 @@ vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, {desc = 
 vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, {desc = "[ ] Find existing buffers"})
 vim.keymap.set(
     "n",
-    "/",
+    "<leader>/",
     function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
         require("telescope.builtin").current_buffer_fuzzy_find(
@@ -368,6 +374,17 @@ vim.keymap.set("n", "<C-h>", require("telescope.builtin").help_tags, {desc = "[S
 vim.keymap.set("n", "<leader>fp", require("telescope.builtin").grep_string, {desc = "[S]earch current [W]ord"})
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, {desc = "[S]earch by [G]rep"})
 vim.keymap.set("n", "<C-l>", require("telescope.builtin").diagnostics, {desc = "[S]earch [D]iagnostics"})
+
+if vim.lsp.inlay_hint then
+    vim.keymap.set(
+        "n",
+        "<leader>si",
+        function()
+            vim.lsp.inlay_hint(0, nil)
+        end,
+        {desc = "[S]how [I]nlay Hints"}
+    )
+end
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -397,7 +414,7 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, {desc = "Open diagno
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
     -- NOTE: Remember that lua is a real programming language, and as such it is possible
     -- to define small helper and utility functions so you don't have to repeat yourself
     -- many times.
@@ -467,7 +484,8 @@ local servers = {
     lua_ls = {
         Lua = {
             workspace = {checkThirdParty = false},
-            telemetry = {enable = false}
+            telemetry = {enable = false},
+            hint = {enable = true}
         }
     }
 }
