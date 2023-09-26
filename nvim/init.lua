@@ -222,6 +222,9 @@ require("lazy").setup(
                 "nvim-treesitter/nvim-treesitter"
             }
         },
+        "tpope/vim-dadbod",
+        "kristijanhusak/vim-dadbod-ui",
+        "kristijanhusak/vim-dadbod-completion",
         -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
         --       These are some example plugins that I've included in the kickstart repository.
         --       Uncomment any of the lines below to enable them.
@@ -550,6 +553,10 @@ cmp.setup(
             {name = "buffer"}
         }
     }
+)
+
+vim.cmd(
+    [[autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })]]
 )
 
 -- The line beneath this is called `modeline`. See `:help modeline`
