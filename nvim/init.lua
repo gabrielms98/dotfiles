@@ -227,7 +227,7 @@ require("lazy").setup(
         "kristijanhusak/vim-dadbod-completion",
         {
             "mg979/vim-visual-multi",
-            branch = "master",
+            branch = "master"
         },
         -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
         --       These are some example plugins that I've included in the kickstart repository.
@@ -346,10 +346,7 @@ require("telescope").setup {
             }
         },
         file_ignore_patterns = {
-            "node%_modules/*",
-            "data/*",
-            "data_scripts/*",
-            "database_scripts/*"
+            "node%_modules/*"
         }
     }
 }
