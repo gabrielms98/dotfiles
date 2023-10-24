@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Get the SHA-256 hash of the yabai program
 YABAI_PATH=$(which yabai)
 if [ -z "$YABAI_PATH" ]; then
