@@ -373,9 +373,27 @@ vim.keymap.set(
 vim.keymap.set("n", "<C-p>", require("telescope.builtin").git_files, {desc = "Search [G]it [F]iles"})
 vim.keymap.set("n", "<leader>pf", require("telescope.builtin").find_files, {desc = "[S]earch [F]iles"})
 vim.keymap.set("n", "<C-h>", require("telescope.builtin").help_tags, {desc = "[S]earch [H]elp"})
-vim.keymap.set("n", "<leader>fp", require("telescope.builtin").grep_string, {desc = "[S]earch current [W]ord"})
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, {desc = "[S]earch by [G]rep"})
 vim.keymap.set("n", "<C-l>", require("telescope.builtin").diagnostics, {desc = "[S]earch [D]iagnostics"})
+vim.keymap.set(
+    "n",
+    "<C-q>",
+    function()
+        local builtin = require("telescope.builtin")
+        builtin.quickfix()
+        require("telescope.builtin").quickfix()
+    end,
+    {desc = "[S]earch [Q]uickfix"}
+)
+
+vim.keymap.set(
+    "n",
+    "<leader>fp",
+    function()
+        local builtin = require("telescope.builtin")
+        builtin.grep_string({search = vim.fn.input("Grep > ")})
+    end
+)
 
 if vim.lsp.inlay_hint then
     vim.keymap.set(
@@ -431,6 +449,14 @@ local on_attach = function(client, bufnr)
         vim.keymap.set("n", keys, func, {buffer = bufnr, desc = desc})
     end
 
+    local imap = function(keys, func, desc)
+        if desc then
+            desc = "LSP: " .. desc
+        end
+
+        vim.keymap.set("i", keys, func, {buffer = bufnr, desc = desc})
+    end
+
     nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
     nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
@@ -444,6 +470,7 @@ local on_attach = function(client, bufnr)
     -- See `:help K` for why this keymap
     nmap("K", vim.lsp.buf.hover, "Hover Documentation")
     nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+    imap("<C-h>", vim.lsp.buf.signature_help, "Signature Documentation")
 
     -- Lesser used LSP functionality
     nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
