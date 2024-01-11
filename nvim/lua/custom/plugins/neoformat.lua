@@ -2,6 +2,7 @@ return {
     "sbdchd/neoformat",
     config = function()
         vim.g.neoformat_try_formatprg = 1
+        vim.g.neoformat_try_node_exe = 1
         vim.b.neoformat_basic_format_retab = 1
         vim.b.neoformat_basic_format_trim = 1
         vim.b.neoformat_basic_format_align = 1
