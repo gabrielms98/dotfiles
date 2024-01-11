@@ -11,6 +11,7 @@
   "lazy.nvim": { "branch": "main", "commit": "96584866b9c5e998cbae300594d0ccfd0c464627" },
   "lazygit.nvim": { "branch": "main", "commit": "de35012036d43bca03628d40d083f7c02a4cda3f" },
   "lualine.nvim": { "branch": "master", "commit": "2248ef254d0a1488a72041cfb45ca9caada6d994" },
+  "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "40301e1c74bc0946eece13edf2b1c561cc497491" },
   "mason.nvim": { "branch": "main", "commit": "eabf6d347fdb75be360d4c0ced1145670a171453" },
   "neodev.nvim": { "branch": "main", "commit": "80487e4f7bfa11c2ef2a1b461963db019aad6a73" },
@@ -30,5 +31,6 @@
   "vim-dadbod": { "branch": "master", "commit": "fecf5a3ecfb1869f34252c7c27351de99f01ab0e" },
   "vim-dadbod-completion": { "branch": "master", "commit": "bcdf3ff768cc7e544a0f78b0383d8719c2116569" },
   "vim-dadbod-ui": { "branch": "master", "commit": "95fd22469507e86b78aa55d868c14108adee2881" },
+  "vim-hexokinase": { "branch": "master", "commit": "62324b43ea858e268fb70665f7d012ae67690f43" },
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" }
 }

@@ -37,6 +37,10 @@ yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 yabai -m config mouse_drop_action            swap
 
+# needed for sketchybar
+yabai -m config top_padding 30
+yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+
 # general space settings
 yabai -m config layout                       bsp
 yabai -m config window_gap                   0
