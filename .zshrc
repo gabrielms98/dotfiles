@@ -102,10 +102,8 @@ alias rr="sudo yabai --load-sa"
 alias lsa="ls -la"
 alias vim="nvim"
 alias ff="~/.config/tmux-finder.sh"
-alias pip="python3 -m pip"
 alias ta="tmux a"
 alias tk="~/.config/tmux-killses.sh"
-alias python="/opt/homebrew/bin/python3"
 alias bg="~/Documents/git/iterm-anime/script.sh"
 alias secret="echo 'import secrets; print(secrets.token_hex(16))' | python3"
 alias cat="bat"
@@ -128,3 +126,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
