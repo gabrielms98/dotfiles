@@ -410,7 +410,7 @@ end
 -- See `:help nvim-treesitter`
 require("nvim-treesitter.configs").setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = {"c", "cpp", "go", "lua", "python", "rust", "tsx", "typescript", "vimdoc", "vim"},
+    ensure_installed = {"c", "cpp", "go", "lua", "python", "rust", "tsx", "typescript", "vimdoc", "vim", "angular"},
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
     highlight = {enable = true},
@@ -543,6 +543,14 @@ mason_lspconfig.setup_handlers {
         }
     end
 }
+local util = require("lspconfig.util")
+
+require("lspconfig").angularls.setup(
+    {
+        root_dir = util.root_pattern("angular.json", "project.json"), -- This is for monorepo's
+        filetypes = {"angular", "html", "typescript", "typescriptreact"}
+    }
+)
 
 -- [[ Configure nvim-cmp ]]
 -- See `:help cmp`
