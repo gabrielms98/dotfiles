@@ -67,7 +67,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(
     {
         -- NOTE: First, some plugins that don't require any configuration
-
+        "nvim-tree/nvim-web-devicons",
         -- Detect tabstop and shiftwidth automatically
         "tpope/vim-sleuth",
         -- NOTE: This is where your plugins related to LSP can be installed.
@@ -310,7 +310,7 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", {expr = true, silent = tru
 
 -- PERSONAL BINDINGS
 -- netrw
-vim.keymap.set("n", "<C-f>", vim.cmd.Ex)
+vim.keymap.set("n", "<C-f>", vim.cmd.Vex)
 vim.g.netrw_altv = 1
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
