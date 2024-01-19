@@ -310,7 +310,7 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", {expr = true, silent = tru
 
 -- PERSONAL BINDINGS
 -- netrw
-vim.keymap.set("n", "<C-f>", vim.cmd.Vex)
+vim.keymap.set("n", "<C-f>", vim.cmd.Ex)
 vim.g.netrw_altv = 1
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
