@@ -33,10 +33,10 @@ sketchybar --bar height=30        \
 # https://felixkratz.github.io/SketchyBar/config/items
 
 sketchybar --default icon.font="SF Pro:Bold:15.0"  \
-                     icon.color=$BLACK                 \
+                     icon.color=$ACCENT_COLOR                 \
                      label.font="SF Pro:Bold:15.0" \
-                     label.color=$BLACK                \
-                     background.color=$WHITE       \
+                     label.color=$ACCENT_COLOR                \
+                     background.color=$BAR_COLOR       \
                      background.corner_radius=5            \
                      background.height=24                  \
                      padding_left=5                        \

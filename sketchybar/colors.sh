@@ -9,7 +9,7 @@ export BLACK=0xe0282828
 # export ACCENT_COLOR=0xff2cf9ed
 
 # -- Gray Scheme --
-export BAR_COLOR=0xff101314
+export BAR_COLOR=0xe0282828
 export ITEM_BG_COLOR=0xff353c3f
 export ACCENT_COLOR=0xffffffff
 
