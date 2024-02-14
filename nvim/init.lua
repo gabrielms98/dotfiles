@@ -514,7 +514,9 @@ local servers = {
     -- gopls = {},
     pyright = {},
     rust_analyzer = {},
-    tsserver = {},
+    tsserver = {
+        init_options = require("nvim-lsp-ts-utils").init_options
+    },
     html = {filetypes = {"html", "twig", "hbs"}},
     lua_ls = {
         Lua = {
