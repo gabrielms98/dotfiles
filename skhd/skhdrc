@@ -49,6 +49,9 @@ lctrl + alt - e : yabai -m space --balance
 # Enable / Disable gaps in current workspace
 lctrl + alt - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
+# Close windows apart from the focused one
+alt + lctrl - w : yabai -m query --windows --space | jq '.[] | select(.["has-focus"]==false) | .id' | xargs -I{} yabai -m window {} --close
+
 # Rotate windows clockwise and anticlockwise
 alt - r         : yabai -m space --rotate 270
 shift + alt - r : yabai -m space --rotate 90
