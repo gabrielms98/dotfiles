@@ -1,7 +1,9 @@
 live_config_reload = true
+[colors.primary]
+background = "#000000"
 
 [window]
-opacity = 0.99
+opacity = 0.95
 title = "gabrielms"
 decorations = "Buttonless"
 
