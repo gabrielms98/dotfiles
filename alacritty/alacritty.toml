@@ -1,6 +1,7 @@
 live_config_reload = true
-[colors.primary]
-background = "#000000"
+
+[colors]
+primary = { foreground = "#ffffff", background = "#000000" }
 
 [window]
 opacity = 0.95
