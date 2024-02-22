@@ -1,0 +1,10 @@
+live_config_reload = true
+
+[window]
+opacity = 0.99
+title = "gabrielms"
+decorations = "Buttonless"
+
+[font]
+size = 18
+normal = { "family" = "GeistMono NF", "style" = "SemiBold" }
