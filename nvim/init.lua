@@ -100,18 +100,6 @@ require("lazy").setup(
             }
         },
         {
-            "yamatsum/nvim-cursorline",
-            config = function()
-                require("nvim-cursorline").setup(
-                    {
-                        cursorword = {
-                            enable = true
-                        }
-                    }
-                )
-            end
-        },
-        {
             -- Adds git related signs to the gutter, as well as utilities for managing changes
             "lewis6991/gitsigns.nvim",
             opts = {
