@@ -112,6 +112,7 @@ alias grep="rg"
 alias ls="eza --icons"
 alias ps="procs"
 export HISTTIMEFORMAT="%d/%m/%y %T "
+alias lg = "lazygit"
 
 ENV_FILE=./env.sh
 [[ -f "$ENV_FILE" ]] && source "$ENV_FILE"
