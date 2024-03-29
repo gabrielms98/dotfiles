@@ -323,6 +323,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<C-b>", "<cmd>silent !tmux neww ~/.config/tmux-finder.sh<CR>")
+vim.keymap.set("n", "<leader>lg", "<cmd>silent !bash ~/.config/tmux-lazygit.sh<CR>")
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
