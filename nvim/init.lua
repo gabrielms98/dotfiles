@@ -325,6 +325,9 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<C-b>", "<cmd>silent !tmux neww ~/.config/tmux-finder.sh<CR>")
 vim.keymap.set("n", "<leader>lg", "<cmd>silent !bash ~/.config/tmux-lazygit.sh<CR>")
 
+vim.api.nvim_create_user_command("Vex", "vsplit", {})
+vim.api.nvim_create_user_command("Sex", "split", {})
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", {clear = true})
