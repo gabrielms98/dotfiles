@@ -100,6 +100,11 @@ require("lazy").setup(
             }
         },
         {
+          "pmizio/typescript-tools.nvim",
+          dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+          opts = {},
+        },
+        {
             -- Adds git related signs to the gutter, as well as utilities for managing changes
             "lewis6991/gitsigns.nvim",
             opts = {
@@ -576,10 +581,6 @@ local servers = {
     -- gopls = {},
     pyright = {},
     rust_analyzer = {},
-    tsserver = {
-        init_options = require("nvim-lsp-ts-utils").init_options
-    },
-    html = {filetypes = {"html", "twig", "hbs"}},
     lua_ls = {
         Lua = {
             workspace = {checkThirdParty = false},
@@ -628,6 +629,14 @@ local cmp = require "cmp"
 local luasnip = require "luasnip"
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.config.setup {}
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = false,
+})
 
 cmp.setup(
     {

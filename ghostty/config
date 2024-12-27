@@ -1,0 +1,17 @@
+background = 000000
+foreground = ffffff
+background-opacity = 0.95
+
+font-family = GeistMono NF
+font-size = 18
+font-style = SemiBold
+font-thicken = true
+
+cursor-style = block
+shell-integration-features = no-cursor
+
+confirm-close-surface = false
+
+window-decoration = false
+mouse-hide-while-typing = true
+macos-window-shadow = false

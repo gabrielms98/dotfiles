@@ -1,5 +1,6 @@
 return {
     "ThePrimeagen/harpoon",
+    branch = "harpoon2",
     config = function()
         local mark = require("harpoon.mark")
         local ui = require("harpoon.ui")
@@ -34,12 +35,6 @@ return {
             function()
                 ui.nav_file(4)
             end
-        )
-
-        require("harpoon").setup(
-            {
-                mark_branch = true
-            }
         )
 
         require("harpoon").setup(
