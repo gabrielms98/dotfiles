@@ -6,6 +6,9 @@ font-family = GeistMono NF
 font-size = 18
 font-style = SemiBold
 font-thicken = true
+font-feature = -calt
+font-feature = -dlig
+font-feature = -liga
 
 cursor-style = block
 shell-integration-features = no-cursor
