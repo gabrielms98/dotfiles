@@ -6,7 +6,7 @@ return {
                 keymaps = {
                     ["g?"] = "actions.show_help",
                     ["<CR>"] = "actions.select",
-                    ["<C-c>"] = "actions.close",
+                    ["<C-c>"] = false,
                     ["<C-l>"] = "actions.refresh",
                     ["-"] = "actions.parent",
                     ["_"] = "actions.open_cwd",
