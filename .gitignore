@@ -1,10 +1,7 @@
-stripe/
-gh/
-deluge/
-gtk*/
-raycast/
-github-copilot/
-filezilla/
-configstore/
-env.sh
-*.log
+*
+!nvim/
+!nvim.bak/
+!ghostty/
+!tmux-finder.sh
+!tmux-killses.sh
+!tmux-lazygit.sh

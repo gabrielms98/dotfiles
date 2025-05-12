@@ -6,7 +6,7 @@ return {
         ['g?'] = 'actions.show_help',
         ['<CR>'] = 'actions.select',
         ['<C-c>'] = false,
-        ['<C-l>'] = 'actions.refresh',
+        ['<C-l>'] = false,
         ['-'] = 'actions.parent',
         ['_'] = 'actions.open_cwd',
         ['gs'] = 'actions.change_sort',
