@@ -700,6 +700,24 @@ require("lazy").setup(
                     return "%2l:%-2v"
                 end
 
+                ---@diagnostic disable-next-line: duplicate-set-field
+                statusline.section_lsp = function()
+                    return ''
+                end
+
+                ---@diagnostic disable-next-line: duplicate-set-field
+                statusline.section_filename = function()
+                    local filename = vim.fn.expand "%:t"
+                    local filetype = vim.bo.filetype
+                    local icon = require("nvim-web-devicons").get_icon(filename, filetype)
+                    if icon then
+                        return icon .. " " .. filename
+                    else
+                        return filename
+                    end
+
+                end
+
                 -- ... and there is more!
                 --  Check out: https://github.com/echasnovski/mini.nvim
             end
