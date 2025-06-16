@@ -1,12 +1,12 @@
 vim.lsp.enable({
-    "lua-ls",
-    "ts-ls",
+    "lua_ls",
     "angularls",
     "tailwindcss",
     "pyright",
-    "emmet-ls",
+    "emmet_ls",
     "eslint",
-    "html"
+    "html",
+    "css_variables"
 })
 
 vim.diagnostic.config({
