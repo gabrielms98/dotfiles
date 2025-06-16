@@ -14,8 +14,7 @@ vim.opt.fileencoding = "utf-8"                          -- the encoding written 
 vim.opt.hlsearch = true                                 -- highlight all matches on previous search pattern
 vim.opt.ignorecase = true                               -- ignore case in search patterns
 vim.opt.mouse = "a"                                     -- allow the mouse to be used in neovim
-vim.opt.pumheight = 10                                  -- pop up menu height
-vim.opt.showmode = false                                -- we don't need to see things like -- INSERT -- anymore
+vim.opt.showmode = true                                 -- we don't need to see things like -- INSERT -- anymore
 vim.opt.showtabline = 0                                 -- always show tabs
 vim.opt.smartcase = true                                -- smart case
 vim.opt.smartindent = true                              -- make indenting smarter again
@@ -40,11 +39,11 @@ vim.opt.scrolloff = 8                                   -- Makes sure there are 
 vim.opt.sidescrolloff = 8                               -- Makes sure there are always eight lines of context
 vim.opt.showcmd = false           -- Don't show the command in the last line
 vim.opt.ruler = true              -- Don't show the ruler
-vim.opt.guifont = "GeistMono:h17" -- the font used in graphical neovim applications
+vim.opt.guifont = "GeistMono NF:h17" -- the font used in graphical neovim applications
 vim.opt.title = true              -- set the title of window to the value of the titlestring
 vim.opt.confirm = true            -- confirm to save changes before exiting modified buffer
 vim.opt.fillchars = { eob = " " } -- change the character at the end of buffer
-vim.opt.winborder = "rounded" -- solid
+vim.opt.winborder = "none" -- solid
 
 vim.opt.guicursor = ""                          -- set the cursor to be a vertical bar
 

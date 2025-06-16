@@ -319,5 +319,4 @@ vim.opt.statusline = table.concat({
     "%=",                    -- Right align
     "%{v:lua.lsp_status()}", -- LSP status
     " %l:%c",                -- Line:Column
-    " %p%%"                  -- Percentage through file
 }, " ")

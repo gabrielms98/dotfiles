@@ -1,7 +1,11 @@
 return {
   'nvim-telescope/telescope.nvim',
   tag = '0.1.8',
-  dependencies = { 'nvim-lua/plenary.nvim' },
+  dependencies = {
+    'folke/noice.nvim',
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+  },
   config = function()
     require('telescope').setup({
       defaults = {
@@ -13,7 +17,10 @@ return {
           },
         },
       },
+      find_files = { hidden = true }
     })
+
+    require("telescope").load_extension("noice")
 
     local builtin = require("telescope.builtin")
     vim.keymap.set(
