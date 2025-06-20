@@ -28,6 +28,7 @@ return {
       scss = { 'prettier', stop_after_first = true },
       yaml = { 'prettier', stop_after_first = true },
       markdown = { 'prettier', stop_after_first = true },
+      csharp = { 'csharpier', stop_after_first = true },
     },
   },
 }
