@@ -1,12 +1,36 @@
+vim.lsp.config("ts_go_ls", {
+    cmd = { vim.loop.os_homedir() .. "/typescript-go/built/local/tsgo", "--lsp", "-stdio" },
+    filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+    },
+    root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+})
+
+vim.lsp.config("vtsls", {
+    settings = {
+        typescript = {
+            tsserver = {
+                maxTsServerMemory = 8192, -- 8GB
+            },
+        },
+    },
+})
+
 vim.lsp.enable({
     "lua_ls",
     "angularls",
     "pyright",
     "emmet_ls",
-    "eslint",
     "html",
     "css_variables",
-    "csharp_ls"
+    "csharp_ls",
+    "vtsls"
+    -- "ts_go_ls",
 })
 
 vim.diagnostic.config({

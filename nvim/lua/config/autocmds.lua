@@ -59,11 +59,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
     local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-
     if client and client.name == "typescript-tools" then
       map("gs", ":TSToolsOrganizeImports<CR>", "Organize Imports")
       map("<leader>gr", ":TSToolsRenameFile<CR>", "Rename File")
       map("gi", ":TSToolsAddMissingImports<CR>", "Import All")
+    elseif client and client.name == "vtsls" then
+      local vtsls = require("vtsls")
+
+      map("gs", function() vtsls.commands.organize_imports() end, "Organize Imports")
+      map("gi",function() vtsls.commands.add_missing_imports() end, "Import All")
     end
 
     map("<leader>e", vim.diagnostic.open_float, "Open Diagnostic Float")
@@ -107,13 +111,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
           vim.api.nvim_clear_autocmds { group = 'lsp-highlight', buffer = event2.buf }
         end,
       })
-    end
-
-
-    if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-      map('<leader>th', function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-      end, '[T]oggle Inlay [H]ints')
     end
   end
 })
