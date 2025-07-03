@@ -64,6 +64,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
       map("<leader>gr", ":TSToolsRenameFile<CR>", "Rename File")
       map("gi", ":TSToolsAddMissingImports<CR>", "Import All")
     elseif client and client.name == "angularls" then
+      -- only see signature help and go to definition
+      local caps = client.server_capabilities
+
+      caps.completionProvider = nil
+      caps.documentFormattingProvider = nil
+      caps.documentRangeFormattingProvider = nil
+      caps.renameProvider = nil
+      caps.codeActionProvider = nil
+      caps.codeLensProvider = nil
+      caps.foldingRangeProvider = nil
+      caps.selectionRangeProvider = nil
+      caps.workspaceSymbolProvider = nil
 
     elseif client and client.name == "vtsls" then
       local vtsls = require("vtsls")
