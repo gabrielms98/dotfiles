@@ -63,6 +63,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
       map("gs", ":TSToolsOrganizeImports<CR>", "Organize Imports")
       map("<leader>gr", ":TSToolsRenameFile<CR>", "Rename File")
       map("gi", ":TSToolsAddMissingImports<CR>", "Import All")
+    elseif client and client.name == "angularls" then
+
     elseif client and client.name == "vtsls" then
       local vtsls = require("vtsls")
 
@@ -78,9 +80,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("gD", vim.lsp.buf.declaration, "Go To Declaration")
     map("gr", vim.lsp.buf.references, "Go To References")
 
-    vim.keymap.set('i', '<c-space>', function()
-      vim.lsp.completion.get()
-    end)
+    vim.keymap.set('i', '<c-space>', function() vim.lsp.completion.get() end)
 
     local function client_supports_method(client, method, bufnr)
       if vim.fn.has 'nvim-0.11' == 1 then

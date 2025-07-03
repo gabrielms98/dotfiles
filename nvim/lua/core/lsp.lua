@@ -17,15 +17,26 @@ vim.lsp.config("vtsls", {
             tsserver = {
                 maxTsServerMemory = 8192, -- 8GB
             },
+            preferences = {
+                includePackageJsonAutoImports = 'off'
+            }
+        },
+        experimental = {
+            completion = {
+                enableServerSideFuzzyMatch = true
+            }
         },
     },
+})
+
+vim.lsp.config("angularls", {
+    cmd = { "ngserver", "--stdio", "--max-old-space-size=4096", "--tsProbeLocations", "../..,?/node_modules", "--ngProbeLocations", "../../@angular/language-server/node_modules,?/node_modules/@angular/language-server/node_modules", "--angularCoreVersion", "" }
 })
 
 vim.lsp.enable({
     "lua_ls",
     "angularls",
-    "pyright",
-    "emmet_ls",
+    "emmet_language_server",
     "html",
     "css_variables",
     "csharp_ls",
