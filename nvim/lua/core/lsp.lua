@@ -30,7 +30,14 @@ vim.lsp.config("vtsls", {
 })
 
 vim.lsp.config("angularls", {
-    cmd = { "ngserver", "--stdio", "--max-old-space-size=4096", "--tsProbeLocations", "../..,?/node_modules", "--ngProbeLocations", "../../@angular/language-server/node_modules,?/node_modules/@angular/language-server/node_modules", "--angularCoreVersion", "" },
+    cmd = {
+        "ngserver",
+        "--stdio",
+        "--max-old-space-size=4096",
+        "--tsProbeLocations", "../..,?/node_modules",
+        "--ngProbeLocations", "../../@angular/language-server/node_modules,?/node_modules/@angular/language-server/node_modules",
+        "--angularCoreVersion", "" 
+    },
     filetypes = { "html", "htmlangular" },
 })
 
@@ -41,7 +48,8 @@ vim.lsp.enable({
     "html",
     "css_variables",
     "csharp_ls",
-    "vtsls"
+    "vtsls",
+    "cssls"
     -- "ts_go_ls",
 })
 
@@ -70,6 +78,7 @@ vim.diagnostic.config({
 
 
 -- Extras
+local icons = require('config.icons')
 
 local function restart_lsp(bufnr)
     bufnr = bufnr or vim.api.nvim_get_current_buf()

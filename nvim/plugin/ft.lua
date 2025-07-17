@@ -5,5 +5,7 @@ vim.filetype.add({
     [".envrc"] = "sh",
     ["*.env"] = "sh",
     ["*.envrc"] = "sh",
+    [".sln"] = "xml",
+    ["*.sln"] = "xml",
   }
 })
