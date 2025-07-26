@@ -34,9 +34,8 @@ vim.opt.breakindent = true                              -- wrap lines with inden
 vim.opt.relativenumber = true                           -- set relative numbered lines
 vim.opt.numberwidth = 4                                 -- set number column width to 2 {default 4}
 vim.opt.signcolumn = "yes:1"                                                 --  show the sign column, otherwise it would shift the text each time
-vim.opt.wrap = false                                    -- display lines as one long line
+vim.opt.wrap = true                                    -- display lines as one long line
 vim.opt.scrolloff = 8                                   -- Makes sure there are always eight lines of context
-vim.opt.sidescrolloff = 8                               -- Makes sure there are always eight lines of context
 vim.opt.showcmd = false           -- Don't show the command in the last line
 vim.opt.ruler = true              -- Don't show the ruler
 vim.opt.guifont = "GeistMono NF:h17" -- the font used in graphical neovim applications
@@ -64,3 +63,6 @@ vim.filetype.add({
         ["%.env%.[%w_.-]+"] = "dotenv",
     },
 })
+
+vim.api.nvim_create_user_command('Vex', 'vsplit', {})
+vim.api.nvim_create_user_command('Sex', 'split', {})

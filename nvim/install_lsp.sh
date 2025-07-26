@@ -8,3 +8,4 @@ npm install -g pyright # pyright
 npm install -g emmet-ls # emmet_ls
 npm install -g vscode-langservers-extracted # eslint, html, json, css
 npm install -g typescript typescript-language-server # ts_ls
+pip install black # python formatter
