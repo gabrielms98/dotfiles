@@ -17,5 +17,9 @@ return {
         show_hidden = true,
       },
     }
+
+    vim.keymap.set('n', '<C-f>', '<cmd>Oil<CR>')
+    vim.api.nvim_create_user_command('Vex', 'vsplit', {})
+    vim.api.nvim_create_user_command('Sex', 'split', {})
   end,
 }
