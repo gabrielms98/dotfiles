@@ -5,6 +5,10 @@ alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
 alt - p : yabai -m space --focus
 
+# create / delete spaces
+shift + alt - n : yabai -m space --create; yabai -m space --focus last
+shift + alt - d : yabai -m space --destroy; yabai -m space --focus last
+
 # Moving windows
 shift + alt - h : yabai -m window --warp west
 shift + alt - j : yabai -m window --warp south
