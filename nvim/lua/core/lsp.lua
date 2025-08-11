@@ -307,16 +307,62 @@ local function safe_lsp_status()
     return ok and result or ""
 end
 
+local icons = require('config.icons')
+
+function diagnostic_status()
+    local ignore = {
+        ['c'] = true, -- command mode
+        ['t'] = true  -- terminal mode
+    }
+
+    local mode = vim.api.nvim_get_mode().mode
+    local label = ''
+
+    if ignore[mode] then
+        return label
+    end
+
+    local levels = vim.diagnostic.severity
+    local errors = #vim.diagnostic.get(0, {severity = levels.ERROR})
+    if errors > 0 then
+        label = label .. icons.diagnostics.Error .. ' ' .. errors .. ' '
+    end
+
+    local warnings = #vim.diagnostic.get(0, {severity = levels.WARN})
+    if warnings > 0 then
+        label = label .. icons.diagnostics.Warning .. ' ' .. warnings .. ' '
+    end
+
+    return label
+end
+
+function file_name()
+    local file = vim.fn.expand('%:t')
+    if file == '' then
+        return icons.ui.EmptyFolder .. " " .. vim.fn.expand('%:p:h:t')
+    end
+    return icons.ui.File .. " ".. file
+end
+
+function spacer()
+    return " " ..  icons.ui.LineMiddle .. " "
+end
+
 _G.git_branch = safe_git_branch
 _G.lsp_status = safe_lsp_status
+_G.cmp_diagnostic_status = diagnostic_status
+_G.file_name = file_name
+_G.spacer = spacer
 
 -- THEN set the statusline
 vim.opt.statusline = table.concat({
     "%{v:lua.git_branch()}", -- Git branch
-    "%f",                    -- File name
+    "%{v:lua.spacer()}",     -- Spacer
+    "%{v:lua.file_name()}",  -- File name
     "%m",                    -- Modified flag
     "%r",                    -- Readonly flag
     "%=",                    -- Right align
+    "%{v:lua.cmp_diagnostic_status()}", -- Diagnostic status
     "%{v:lua.lsp_status()}", -- LSP status
     " %l:%c",                -- Line:Column
 }, " ")
