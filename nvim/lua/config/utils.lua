@@ -30,4 +30,10 @@ M.insert_package_json = function(root_files, field, fname)
   return M.root_markers_with_field(root_files, { 'package.json', 'package.json5' }, field, fname)
 end
 
+M.kebab_case_to_camel_case = function(str)
+  return str:gsub("-(%a)", function(letter)
+    return letter:upper()
+  end)
+end
+
 return M
