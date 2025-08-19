@@ -18,9 +18,9 @@ function _G.AngularComponentSnippet()
   local template = {
     "/**",
     " * @file " .. vim.fn.fnamemodify(file_name, ":t"),
-    " * @author your-name",
+    " * @author Gabriel Martins",
     " *",
-    " * This file defines the " .. class_name .. ", which is responsible for...",
+    " * " .. class_name .. " component",
     " */",
     "",
     "import { Component } from '@angular/core';",
@@ -37,3 +37,4 @@ function _G.AngularComponentSnippet()
 
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, template)
 end
+
