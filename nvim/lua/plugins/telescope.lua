@@ -29,7 +29,6 @@ return {
             ['<C-d>'] = false, -- Disable deleting half of the prompt
           },
         },
-        path_display = { "truncate" },
       },
       find_files = {
         hidden = true,
