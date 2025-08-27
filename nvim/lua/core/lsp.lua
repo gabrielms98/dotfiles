@@ -1,3 +1,20 @@
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim" },
+            },
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false,
+            },
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+})
+
 vim.lsp.enable({
     "lua_ls",
     "angularls",
@@ -324,12 +341,12 @@ function diagnostic_status()
     end
 
     local levels = vim.diagnostic.severity
-    local errors = #vim.diagnostic.get(0, {severity = levels.ERROR})
+    local errors = #vim.diagnostic.get(0, { severity = levels.ERROR })
     if errors > 0 then
         label = label .. icons.diagnostics.Error .. ' ' .. errors .. ' '
     end
 
-    local warnings = #vim.diagnostic.get(0, {severity = levels.WARN})
+    local warnings = #vim.diagnostic.get(0, { severity = levels.WARN })
     if warnings > 0 then
         label = label .. icons.diagnostics.Warning .. ' ' .. warnings .. ' '
     end
@@ -342,11 +359,11 @@ function file_name()
     if file == '' then
         return icons.ui.EmptyFolder .. " " .. vim.fn.expand('%:p:h:t')
     end
-    return icons.ui.File .. " ".. file
+    return icons.ui.File .. " " .. file
 end
 
 function spacer()
-    return " " ..  icons.ui.LineMiddle .. " "
+    return " " .. icons.ui.LineMiddle .. " "
 end
 
 _G.git_branch = safe_git_branch
@@ -357,13 +374,13 @@ _G.spacer = spacer
 
 -- THEN set the statusline
 vim.opt.statusline = table.concat({
-    "%{v:lua.git_branch()}", -- Git branch
-    "%{v:lua.spacer()}",     -- Spacer
-    "%{v:lua.file_name()}",  -- File name
-    "%m",                    -- Modified flag
-    "%r",                    -- Readonly flag
-    "%=",                    -- Right align
+    "%{v:lua.git_branch()}",            -- Git branch
+    "%{v:lua.spacer()}",                -- Spacer
+    "%{v:lua.file_name()}",             -- File name
+    "%m",                               -- Modified flag
+    "%r",                               -- Readonly flag
+    "%=",                               -- Right align
     "%{v:lua.cmp_diagnostic_status()}", -- Diagnostic status
-    "%{v:lua.lsp_status()}", -- LSP status
-    " %l:%c",                -- Line:Column
+    "%{v:lua.lsp_status()}",            -- LSP status
+    " %l:%c",                           -- Line:Column
 }, " ")
