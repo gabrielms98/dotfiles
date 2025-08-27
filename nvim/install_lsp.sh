@@ -7,5 +7,5 @@ npm install -g @tailwindcss/language-server
 npm install -g pyright # pyright
 npm install -g emmet-ls # emmet_ls
 npm install -g vscode-langservers-extracted # eslint, html, json, css
-npm install -g typescript typescript-language-server # ts_ls
+npm install -g @vtsls/language-server # vtsls
 pip install black # python formatter

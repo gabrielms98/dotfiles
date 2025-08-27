@@ -6,7 +6,8 @@ vim.lsp.enable({
     "emmet_ls",
     "eslint",
     "html",
-    "css_variables"
+    "css_variables",
+    "vtsls"
 })
 
 vim.diagnostic.config({
