@@ -15,16 +15,28 @@ vim.lsp.config("lua_ls", {
     },
 })
 
+vim.lsp.config("pylsp", {
+    settings = {
+        pylsp = {
+            plugins = {
+                rope_autoimport = {
+                    enabled = true,
+                }
+            }
+        }
+    }
+})
+
 vim.lsp.enable({
     "lua_ls",
     "angularls",
     "tailwindcss",
-    "pyright",
     "emmet_ls",
     "eslint",
     "html",
     "css_variables",
-    "vtsls"
+    "vtsls",
+    "pylsp"
 })
 
 vim.diagnostic.config({

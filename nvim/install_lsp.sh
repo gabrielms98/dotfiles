@@ -9,3 +9,4 @@ npm install -g emmet-ls # emmet_ls
 npm install -g vscode-langservers-extracted # eslint, html, json, css
 npm install -g @vtsls/language-server # vtsls
 pip install black # python formatter
+pip install "python-lsp-server[all]"
