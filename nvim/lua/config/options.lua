@@ -1,3 +1,4 @@
+vim.hl = vim.highlight
 vim.g.mapleader = " "                                   -- change leader to a space
 vim.g.maplocalleader = " "                              -- change localleader to a space
 
