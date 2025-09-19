@@ -25,6 +25,7 @@ vim.lsp.enable({
     "html",
     "css_variables",
     "vtsls",
+    "jsonls"
 })
 
 vim.diagnostic.config({
