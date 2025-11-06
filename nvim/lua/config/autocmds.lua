@@ -65,6 +65,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
       map("gs", function() vtsls.commands.organize_imports() end, "Organize Imports")
       map("gi", function() vtsls.commands.add_missing_imports() end, "Import All")
+    elseif client and client.name == "typescript-tools" then
+      local ts_tools = require("typescript-tools")
+
+      map("gs", "<cmd>TSToolsOrganizeImports<CR>", "Organize Imports")
+      map("gi", "<cmd>TSToolsAddMissingImports<CR>", "Import All")
     end
 
     map("<leader>e", vim.diagnostic.open_float, "Open Diagnostic Float")
