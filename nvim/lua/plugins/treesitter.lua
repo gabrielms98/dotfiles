@@ -17,8 +17,10 @@ return {
       "query",
       "vim",
       "typescript",
+      "javascript",
       "vimdoc",
-      "python"
+      "python",
+      "angular"
     },
     -- Autoinstall languages that are not installed
     auto_install = true,

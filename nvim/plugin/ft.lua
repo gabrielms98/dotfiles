@@ -4,6 +4,13 @@ vim.filetype.add({
     [".env"] = "sh",
     [".envrc"] = "sh",
     ["*.env"] = "sh",
-    ["*.envrc"] = "sh",
+    ["*.envrc"] = "sh"
   }
+})
+
+vim.filetype.add({
+  pattern = {
+    [".*%.component%.html"] = "htmlangular",
+    [".*%.container%.html"] = "htmlangular",
+  },
 })
