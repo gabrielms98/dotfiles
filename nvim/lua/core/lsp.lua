@@ -33,7 +33,8 @@ vim.lsp.enable({
     "html",
     "css_variables",
     "jsonls",
-    "ty"
+    -- "ty",
+    "pyright"
 })
 
 vim.diagnostic.config({
