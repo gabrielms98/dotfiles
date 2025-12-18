@@ -62,7 +62,7 @@ yabai -m config left_padding                 15
 yabai -m config right_padding                15
 yabai -m config window_gap                   10
 
-yabai -m rule --add app="^(Finder|System Settings|System Information|Activity Monitor|FaceTime|Screen Sharing|Calculator|Stickies|TinkerTool|Progressive Downloader|Transmission|Airflow|bg-tray)$" manage=off
+yabai -m rule --add app="^(Finder|System Settings|System Information|Activity Monitor|FaceTime|Screen Sharing|Calculator|Stickies|TinkerTool|Progressive Downloader|Transmission|Airflow|bg-tray|Slack)$" manage=off
 yabai -m rule --add app="^Arc$" title="^$" mouse_follows_focus=off
 yabai -m signal --add event=window_focused action='yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".split == \"horizontal\"" && yabai -m window --toggle split'
 
