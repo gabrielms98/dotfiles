@@ -114,7 +114,7 @@ alias ps="procs"
 export HISTTIMEFORMAT="%d/%m/%y %T "
 alias lg="lazygit"
 
-ENV_FILE=./env.sh
+ENV_FILE="$HOME/.config/env.sh"
 [[ -f "$ENV_FILE" ]] && source "$ENV_FILE"
 alias internal="$INTERNAL"
 alias production="$PRODUCTION"

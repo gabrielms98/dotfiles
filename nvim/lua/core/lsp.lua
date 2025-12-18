@@ -15,17 +15,24 @@ vim.lsp.config("lua_ls", {
     },
 })
 
+vim.lsp.config('ty', {
+    settings = {
+        ty = {
+            diagnosticMode = 'workspace'
+        }
+    }
+})
+
 vim.lsp.enable({
     "lua_ls",
     "angularls",
     "tailwindcss",
-    "pyright",
     "emmet_ls",
     "eslint",
     "html",
     "css_variables",
-    -- "vtsls",
-    "jsonls"
+    "jsonls",
+    "ty"
 })
 
 vim.diagnostic.config({

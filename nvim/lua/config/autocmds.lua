@@ -66,8 +66,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       map("gs", function() vtsls.commands.organize_imports() end, "Organize Imports")
       map("gi", function() vtsls.commands.add_missing_imports() end, "Import All")
     elseif client and client.name == "typescript-tools" then
-      local ts_tools = require("typescript-tools")
-
       map("gs", "<cmd>TSToolsOrganizeImports<CR>", "Organize Imports")
       map("gi", "<cmd>TSToolsAddMissingImports<CR>", "Import All")
     end
@@ -79,6 +77,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>rn", vim.lsp.buf.rename, "Rename")
     map("gD", vim.lsp.buf.declaration, "Go To Declaration")
     map("gr", vim.lsp.buf.references, "Go To References")
+    vim.keymap.set('i', '<C-s>', vim.lsp.buf.signature_help,
+      { silent = true, buffer = true, desc = "Show function signature" })
 
     vim.keymap.set('i', '<c-space>', function()
       vim.lsp.completion.get()
