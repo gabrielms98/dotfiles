@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field, param-type-mismatch
 vim.lsp.config("lua_ls", {
     settings = {
         Lua = {
@@ -87,7 +88,7 @@ end, {})
 local function lsp_status()
     local bufnr = vim.api.nvim_get_current_buf()
     local clients = vim.lsp.get_clients and vim.lsp.get_clients({ bufnr = bufnr }) or
-        vim.lsp.get_active_clients({ bufnr = bufnr })
+        vim.lsp.get_clients({ bufnr = bufnr })
 
     if #clients == 0 then
         print("󰅚 No LSP clients attached")
@@ -123,7 +124,7 @@ vim.api.nvim_create_user_command('LspStatus', lsp_status, { desc = "Show detaile
 local function check_lsp_capabilities()
     local bufnr = vim.api.nvim_get_current_buf()
     local clients = vim.lsp.get_clients and vim.lsp.get_clients({ bufnr = bufnr }) or
-        vim.lsp.get_active_clients({ bufnr = bufnr })
+        vim.lsp.get_clients({ bufnr = bufnr })
 
     if #clients == 0 then
         print("No LSP clients attached")
@@ -190,7 +191,7 @@ vim.api.nvim_create_user_command('LspDiagnostics', lsp_diagnostics_info, { desc 
 local function lsp_info()
     local bufnr = vim.api.nvim_get_current_buf()
     local clients = vim.lsp.get_clients and vim.lsp.get_clients({ bufnr = bufnr }) or
-        vim.lsp.get_active_clients({ bufnr = bufnr })
+        vim.lsp.get_clients({ bufnr = bufnr })
 
     print("═══════════════════════════════════")
     print("           LSP INFORMATION          ")
@@ -295,7 +296,7 @@ vim.api.nvim_create_user_command('LspInfo', lsp_info, { desc = "Show comprehensi
 local function lsp_status_short()
     local bufnr = vim.api.nvim_get_current_buf()
     local clients = vim.lsp.get_clients and vim.lsp.get_clients({ bufnr = bufnr }) or
-        vim.lsp.get_active_clients({ bufnr = bufnr })
+        vim.lsp.get_clients({ bufnr = bufnr })
 
     if #clients == 0 then
         return "" -- Return empty string when no LSP
@@ -335,7 +336,7 @@ end
 
 local icons = require('config.icons')
 
-function diagnostic_status()
+local function diagnostic_status()
     local ignore = {
         ['c'] = true, -- command mode
         ['t'] = true  -- terminal mode
@@ -362,7 +363,7 @@ function diagnostic_status()
     return label
 end
 
-function file_name()
+local function file_name()
     local file = vim.fn.expand('%:t')
     if file == '' then
         return icons.ui.EmptyFolder .. " " .. vim.fn.expand('%:p:h:t')
@@ -370,7 +371,7 @@ function file_name()
     return icons.ui.File .. " " .. file
 end
 
-function spacer()
+local function spacer()
     return " " .. icons.ui.LineMiddle .. " "
 end
 
