@@ -162,7 +162,6 @@ return {
             return get_monorepo_root(path)
           end,
           jestArguments = function(default_args, context)
-            vim.print({ default_args = default_args, context = context })
             local project_name = get_project_name(context.file)
 
             -- Filter out Jest-specific flags that Nx doesn't understand
