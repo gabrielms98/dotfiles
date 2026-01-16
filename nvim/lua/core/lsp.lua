@@ -38,6 +38,27 @@ vim.lsp.config('ty', {
     }
 })
 
+-- ts_ls performance tuning
+vim.lsp.config('ts_ls', {
+    init_options = {
+        hostInfo = "neovim",
+        tsserver = {
+            -- Increase memory for large workspaces
+            maxTsServerMemory = 4096,
+        },
+        preferences = {
+            -- Cut down suggestion noise and heavy computations
+            includeCompletionsForModuleExports = false,
+            autoImportModuleSpecifierPreference = "relative",
+        },
+    },
+    flags = {
+        -- Reduce churn on big files
+        debounce_text_changes = 150,
+    },
+    filetypes = { "typescript", "typescriptreact", "tsx" },
+})
+
 vim.lsp.enable({
     "lua_ls",
     "angularls",
