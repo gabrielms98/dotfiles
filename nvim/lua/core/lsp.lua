@@ -16,6 +16,20 @@ vim.lsp.config("lua_ls", {
     },
 })
 
+vim.lsp.config('angularls', {
+    filetypes = { 'typescript', 'html', 'typescript.tsx', 'htmlangular' },
+    settings = {
+        angular = {
+            suggest = {
+                autoImports = true,
+                componentSelectors = true,
+                htmlElements = true,
+                htmlAttributes = true,
+            }
+        }
+    }
+})
+
 vim.lsp.config('ty', {
     settings = {
         ty = {
@@ -27,15 +41,48 @@ vim.lsp.config('ty', {
 vim.lsp.enable({
     "lua_ls",
     "angularls",
-    "tailwindcss",
+    -- "tailwindcss",
     "emmet_ls",
     "eslint",
     "html",
     "css_variables",
     "jsonls",
     -- "ty",
-    "pyright"
+    "pyright",
+    "ts_ls"
 })
+
+-- Filter node_modules from Go to Definition results and jump directly when single
+local _orig_def = vim.lsp.handlers['textDocument/definition']
+vim.lsp.handlers['textDocument/definition'] = function(err, result, ctx, config)
+    if err then
+        return _orig_def(err, result, ctx, config)
+    end
+    if not result then
+        return _orig_def(nil, result, ctx, config)
+    end
+
+    local locations = result
+    if not vim.tbl_islist(locations) then
+        locations = { locations }
+    end
+
+    local filtered = vim.tbl_filter(function(loc)
+        local uri = loc.uri or loc.targetUri
+        if not uri then return true end
+        return not string.find(uri:lower(), 'node_modules')
+    end, locations)
+
+    if #filtered == 0 then
+        filtered = locations -- fallback to original if all were filtered
+    end
+
+    if #filtered == 1 then
+        return vim.lsp.util.jump_to_location(filtered[1], 'utf-8')
+    end
+
+    return _orig_def(nil, filtered, ctx, config)
+end
 
 vim.diagnostic.config({
     virtual_text = true,

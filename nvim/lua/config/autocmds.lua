@@ -51,7 +51,21 @@ api.nvim_create_autocmd(
 -- resize neovim split when terminal is resized
 vim.api.nvim_command("autocmd VimResized * wincmd =")
 
-vim.api.nvim_create_autocmd("LspAttach", {
+-- Helpers to apply specific tsserver code actions via ts_ls
+local function ts_apply_action_by_kind(kind)
+  -- Prefer context.only to request a specific server-side action
+  vim.lsp.buf.code_action({ context = { only = { kind } } })
+end
+
+local function ts_add_missing_imports()
+  ts_apply_action_by_kind("source.addMissingImports.ts")
+end
+
+local function ts_organize_imports()
+  ts_apply_action_by_kind("source.organizeImports.ts")
+end
+
+api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
     local map = function(keys, func, desc)
@@ -59,20 +73,45 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
     local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-
-    if client and client.name == "vtsls" then
-      local vtsls = require("vtsls")
-
-      map("gs", function() vtsls.commands.organize_imports() end, "Organize Imports")
-      map("gi", function() vtsls.commands.add_missing_imports() end, "Import All")
-    elseif client and client.name == "typescript-tools" then
-      map("gs", "<cmd>TSToolsOrganizeImports<CR>", "Organize Imports")
-      map("gi", "<cmd>TSToolsAddMissingImports<CR>", "Import All")
+    -- Bind gs/gi to ts_ls filtered code actions (works when ts_ls provides them)
+    if client and client.name == "ts_ls" then
+      map("gs", ts_organize_imports, "Organize Imports")
+      map("gi", ts_add_missing_imports, "Import All")
     end
 
     map("<leader>e", vim.diagnostic.open_float, "Open Diagnostic Float")
     map("K", vim.lsp.buf.hover, "Hover Documentation")
-    map("gd", vim.lsp.buf.definition, "Go to Definition")
+    -- Custom gd: go to first non-node_modules definition without opening quickfix
+    local function go_to_first_definition()
+      vim.lsp.buf.definition({
+        on_list = function(options)
+          local items = options.items or {}
+          -- filter out node_modules and .d.ts
+          local filtered = {}
+          for _, it in ipairs(items) do
+            local fname = it.filename or it.uri or ""
+            local lower = tostring(fname):lower()
+            if not lower:find("node_modules") and not lower:find("%.d%.ts$") then
+              table.insert(filtered, it)
+            end
+          end
+          if #filtered == 0 then
+            filtered = items
+          end
+          if #filtered == 1 then
+            vim.fn.setqflist({ filtered[1] }, "r")
+            vim.cmd("cfirst")
+          else
+            -- Jump to first; do not keep the list open
+            options.items = filtered
+            vim.fn.setqflist({}, " ", options)
+            vim.cmd("cfirst")
+            vim.cmd("cclose")
+          end
+        end,
+      })
+    end
+    map("gd", go_to_first_definition, "Go to Definition")
     map("ga", vim.lsp.buf.code_action, "Code Action")
     map("<leader>rn", vim.lsp.buf.rename, "Rename")
     map("gD", vim.lsp.buf.declaration, "Go To Declaration")
@@ -115,7 +154,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
       })
     end
 
-
     if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
       map('<leader>th', function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
@@ -124,8 +162,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end
 })
 
-
-vim.api.nvim_create_autocmd("FileType", {
+api.nvim_create_autocmd("FileType", {
   callback = function()
     pcall(vim.treesitter.start)
   end,
