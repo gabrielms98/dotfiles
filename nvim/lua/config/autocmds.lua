@@ -162,6 +162,43 @@ api.nvim_create_autocmd("LspAttach", {
   end
 })
 
+-- Command: jump to type definition under cursor
+vim.api.nvim_create_user_command('LspGoToType', function()
+  vim.lsp.buf.type_definition({
+    on_list = function(options)
+      local items = options.items or {}
+      local filtered = {}
+      for _, it in ipairs(items) do
+        local fname = it.filename or it.uri or ""
+        local lower = tostring(fname):lower()
+        if not lower:find("node_modules") and not lower:find("%.d%.ts$") then
+          table.insert(filtered, it)
+        end
+      end
+      if #filtered == 0 then filtered = items end
+      if #filtered == 1 then
+        vim.fn.setqflist({ filtered[1] }, "r")
+        vim.cmd("cfirst")
+      else
+        options.items = filtered
+        vim.fn.setqflist({}, " ", options)
+        vim.cmd("cfirst")
+        vim.cmd("cclose")
+      end
+    end,
+  })
+end, { desc = "Go to type definition" })
+
+api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup('lsp-type-def', { clear = true }),
+  callback = function(event)
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client and client.name == "ts_ls" then
+      vim.keymap.set("n", "gy", function() vim.cmd("LspGoToType") end, { buffer = event.buf, desc = "LSP: Go to Type" })
+    end
+  end,
+})
+
 api.nvim_create_autocmd("FileType", {
   callback = function()
     pcall(vim.treesitter.start)
