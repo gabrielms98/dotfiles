@@ -48,7 +48,7 @@ vim.lsp.config('ts_ls', {
         },
         preferences = {
             -- Cut down suggestion noise and heavy computations
-            includeCompletionsForModuleExports = false,
+            includeCompletionsForModuleExports = true,
             autoImportModuleSpecifierPreference = "relative",
         },
     },
@@ -57,6 +57,26 @@ vim.lsp.config('ts_ls', {
         debounce_text_changes = 150,
     },
     filetypes = { "typescript", "typescriptreact", "tsx" },
+})
+
+-- typescript-go configuration with auto import support
+vim.lsp.config('tsgo', {
+    settings = {
+        typescript = {
+            preferences = {
+                includeCompletionsForModuleExports = true,
+                includePackageJsonAutoImports = "auto",
+            },
+            suggest = {
+                autoImports = true,
+            },
+            -- Enable code actions for imports
+            updateImportsOnFileMove = {
+                enabled = "always",
+            },
+        },
+    },
+    filetypes = { "typescript", "typescriptreact", "tsx", "javascript", "javascriptreact" },
 })
 
 vim.lsp.enable({
@@ -70,7 +90,8 @@ vim.lsp.enable({
     "jsonls",
     -- "ty",
     "pyright",
-    "ts_ls"
+    -- "ts_ls",
+    -- "tsgo"
 })
 
 -- Filter node_modules from Go to Definition results and jump directly when single
