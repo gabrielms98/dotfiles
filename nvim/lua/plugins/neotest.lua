@@ -106,6 +106,37 @@ local function get_monorepo_root(path)
   return tostring(current_path)
 end
 
+-- Helper function to check if project has a test target
+local function has_test_target(path)
+  local plenary_path = require("plenary.path")
+  local current_path = plenary_path:new(path or vim.fn.expand("%:p"))
+
+  if not current_path:is_dir() then
+    current_path = current_path:parent()
+  end
+
+  local search_path = current_path
+  while search_path do
+    local project_json = search_path / "project.json"
+    if project_json:exists() then
+      local content = project_json:read()
+      local ok, parsed = pcall(vim.json.decode, content)
+      if ok and parsed and parsed.targets and parsed.targets.test then
+        return true
+      end
+      return false
+    end
+
+    local parent = search_path:parent()
+    if not parent or tostring(parent) == tostring(search_path) then
+      break
+    end
+    search_path = parent
+  end
+
+  return false
+end
+
 -- Helper function to find project.json and extract the name attribute
 local function get_project_name(path)
   local plenary_path = require("plenary.path")
@@ -156,12 +187,24 @@ return {
     require("neotest").setup {
       adapters = {
         require("neotest-jest")({
-          jestCommand = "nx test",
+          jestCommand = function(path)
+            -- Use nx test if project has test target, otherwise use npx jest directly
+            if has_test_target(path) then
+              return "nx test"
+            else
+              return "npx jest"
+            end
+          end,
           cwd = function(path)
             -- Use monorepo root (where nx.json is) as the working directory
             return get_monorepo_root(path)
           end,
           jestArguments = function(default_args, context)
+            -- If no test target, just return default args (standard Jest)
+            if not has_test_target(context.file) then
+              return default_args
+            end
+
             local project_name = get_project_name(context.file)
 
             -- Filter out Jest-specific flags that Nx doesn't understand
@@ -187,8 +230,7 @@ return {
                 -- Allow --json flag (needed for neotest to parse results)
                 -- Allow --outputFile flag (needed for neotest to read results)
                 -- Skip Jest-specific flags that Nx doesn't understand
-              elseif not arg:match("^--testLocationInResults")
-                  and not arg:match("^--listTests")
+              elseif not arg:match("^--listTests")
                   and not arg:match("^--findRelatedTests")
                   and not arg:match("^--forceExit")
                   and not arg:match("^--testPathPattern")
