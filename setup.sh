@@ -22,8 +22,6 @@ echo "Installing command line tools..."
 brew install \
     neovim \
     tmux \
-    yabai \
-    skhd \
     lazygit \
     bat \
     fd \
