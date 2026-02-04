@@ -52,7 +52,10 @@ return {
       "n",
       "<leader>fp",
       function()
-        builtin.grep_string({ search = vim.fn.input("Grep > ") })
+        vim.ui.input({ prompt = "Grep > " }, function(query)
+          if not query or query == "" then return end
+          builtin.grep_string({ search = query })
+        end)
       end
     )
     -- Shortcut for searching your Neovim configuration files
