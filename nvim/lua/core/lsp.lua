@@ -79,6 +79,18 @@ vim.lsp.config('tsgo', {
     filetypes = { "typescript", "typescriptreact", "tsx", "javascript", "javascriptreact" },
 })
 
+vim.lsp.config('pyright', {
+    settings = {
+        python = {
+            analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+                diagnosticMode = "workspace", -- "openFilesOnly" is the default
+            },
+        },
+    },
+})
+
 vim.lsp.enable({
     "lua_ls",
     "angularls",
@@ -128,7 +140,7 @@ end
 
 vim.diagnostic.config({
     virtual_text = true,
-    underline = true,
+    underline = false,
     update_in_insert = false,
     severity_sort = true,
     float = {
