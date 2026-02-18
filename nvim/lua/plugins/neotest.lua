@@ -215,10 +215,16 @@ return {
             -- Process default_args to find the test file and filter Jest flags
             for _, arg in ipairs(default_args) do
               -- Check if this is a test file path (ends with .test.ts, .test.tsx, .spec.ts, etc.)
+              -- or --testLocationInResults=/path (neotest-jest can pass path as value; we skip the flag and use path for --testFile)
               if arg:match("%.test%.[jt]sx?$") or arg:match("%.spec%.[jt]sx?$") then
                 test_file = arg
-                -- Convert --testNamePattern to -t for Nx
+              elseif arg:match("^--testLocationInResults=(.+)$") then
+                local path = arg:match("^--testLocationInResults=(.+)$")
+                if path and (path:match("%.test%.[jt]sx?$") or path:match("%.spec%.[jt]sx?$")) then
+                  test_file = path
+                end
               elseif arg:match("^--testNamePattern") then
+                -- Convert --testNamePattern to -t for Nx
                 local pattern = arg:match("^--testNamePattern=(.+)$")
                 if pattern then
                   table.insert(nx_args, "-t")
@@ -229,12 +235,15 @@ return {
                 end
                 -- Allow --json flag (needed for neotest to parse results)
                 -- Allow --outputFile flag (needed for neotest to read results)
-                -- Skip Jest-specific flags that Nx doesn't understand
+                -- Skip Jest-specific flags that Nx doesn't understand.
+                -- Nx expects testLocationInResults to be a boolean; neotest-jest can pass the file path
+                -- as the next arg or as --testLocationInResults=/path, which Nx rejects.
               elseif not arg:match("^--listTests")
                   and not arg:match("^--findRelatedTests")
                   and not arg:match("^--forceExit")
                   and not arg:match("^--testPathPattern")
-                  and not arg:match("^--testMatch") then
+                  and not arg:match("^--testMatch")
+                  and not arg:match("^--testLocationInResults") then
                 -- Keep other arguments that might be useful for Nx (including --json and --outputFile)
                 table.insert(nx_args, arg)
               end
