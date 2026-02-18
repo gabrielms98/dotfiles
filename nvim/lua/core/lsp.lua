@@ -94,7 +94,7 @@ vim.lsp.config('pyright', {
 vim.lsp.enable({
     "lua_ls",
     "angularls",
-    -- "tailwindcss",
+    "tailwindcss",
     "emmet_ls",
     "eslint",
     "html",
