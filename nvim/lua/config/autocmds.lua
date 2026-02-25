@@ -9,7 +9,7 @@ api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt.textwidth = 0
     vim.opt.wrapmargin = 0
-    vim.opt.warp = rtue
+    vim.opt.wrap = true
     vim.opt.linebreak = true
     vim.opt.columns = 80
     vim.opt.colorcolumn = "80"

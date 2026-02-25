@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
-# Split window vertically and create a right pane with fixed width (30% of window)
-# The -l flag sets the width in percentage or absolute columns
-tmux split-window -h -l 30% -c '#{pane_current_path}' 'opencode .'
+# Single instance per session: focus existing opencode pane if present
+opencode_pane=$(tmux list-panes -a -F '#{pane_id} #{pane_title}' 2>/dev/null | awk '$2 == "opencode" { print $1; exit }')
+if [[ -n "$opencode_pane" ]]; then
+  tmux select-pane -t "$opencode_pane"
+  exit 0
+fi
 
-# Optional: Switch focus back to the left pane (original pane)
-# Uncomment the line below if you want to keep focus on the original pane
-# tmux select-pane -t 0
+# Split window vertically and create a right pane with fixed width (30% of window).
+# Set pane title so we can find it for reuse; trap ensures closing the pane kills opencode.
+tmux split-window -h -l 30% -c '#{pane_current_path}' \
+  "tmux select-pane -T opencode; trap 'kill 0' EXIT HUP INT TERM; exec opencode ."
