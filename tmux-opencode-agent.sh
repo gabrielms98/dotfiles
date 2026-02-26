@@ -8,6 +8,7 @@ if [[ -n "$opencode_pane" ]]; then
 fi
 
 # Split window vertically and create a right pane with fixed width (30% of window).
-# Set pane title so we can find it for reuse; trap ensures closing the pane kills opencode.
+# Set pane title so we can find it for reuse. Keep shell (no exec) so trap runs on pane close
+# and kills the whole process group (opencode and any child processes).
 tmux split-window -h -l 30% -c '#{pane_current_path}' \
-  "tmux select-pane -T opencode; trap 'kill 0' EXIT HUP INT TERM; exec opencode ."
+  "tmux select-pane -T opencode; trap 'kill 0' EXIT HUP INT TERM; opencode ."
