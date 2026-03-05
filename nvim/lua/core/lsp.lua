@@ -103,7 +103,7 @@ vim.lsp.enable({
     -- "ty",
     "pyright",
     -- "ts_ls",
-    "tsgo"
+    -- "tsgo"
 })
 
 -- Filter node_modules from Go to Definition results and jump directly when single
