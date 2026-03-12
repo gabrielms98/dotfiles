@@ -5,7 +5,6 @@ return {
   },
   config = function()
     require('copilot').setup {
-      nes = { enabled = true },
       -- Use a specific model ID for completions (optional).
       -- Run :Copilot model list to see available models for your account;
       -- :Copilot model select to pick interactively. Leave "" for server default.
@@ -19,18 +18,6 @@ return {
           prev = '<C-k>',
           dismiss = '<C-\\>',
         },
-      },
-      panel = {
-        enabled = true,
-        auto_refresh = true,
-        keymap = {
-          jump_prev = '[[',
-          jump_next = ']]',
-          accept = '<CR>',
-          refresh = 'gr',
-          open = '<M-CR>',
-        },
-        layout = { position = 'bottom', ratio = 0.4 },
       },
       -- Tune suggestion quality and count
       server_opts_overrides = {
