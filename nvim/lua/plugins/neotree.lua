@@ -8,6 +8,17 @@ return {
   },
   lazy = false,
   config = function()
+    require("neo-tree").setup({
+      filesystem = {
+        hijack_netrw_behavior = "disabled",
+        filtered_items = {
+          visible = true,
+          hide_dotfiles = false,
+          hide_gitignored = false,
+          hide_by_name = { "node_modules" },
+        },
+      },
+    })
     vim.keymap.set('n', '<leader>neo', ':Neotree filesystem reveal right<CR>', { noremap = true, silent = true })
   end
 }
