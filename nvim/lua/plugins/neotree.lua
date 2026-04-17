@@ -15,7 +15,7 @@ return {
           visible = true,
           hide_dotfiles = false,
           hide_gitignored = false,
-          hide_by_name = { "node_modules" },
+          hide_by_name = { "node_modules", ".yarn", ".git", ".vscode", ".nx" },
         },
       },
     })
