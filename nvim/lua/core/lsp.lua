@@ -91,6 +91,34 @@ vim.lsp.config('pyright', {
     },
 })
 
+vim.lsp.config('sourcekit', {
+    cmd = { vim.trim(vim.fn.system('xcrun -f sourcekit-lsp')) },
+    filetypes = { 'swift' },
+    root_markers = {
+        'buildServer.json',
+        'Package.swift',
+        'compile_commands.json',
+        '.sourcekit-lsp',
+        '.git',
+    },
+    get_language_id = function(_, ftype)
+        return ftype
+    end,
+    capabilities = {
+        workspace = {
+            didChangeWatchedFiles = {
+                dynamicRegistration = true,
+            },
+        },
+        textDocument = {
+            diagnostic = {
+                dynamicRegistration = true,
+                relatedDocumentSupport = true,
+            },
+        },
+    },
+})
+
 vim.lsp.enable({
     "lua_ls",
     "angularls",
@@ -100,6 +128,7 @@ vim.lsp.enable({
     "html",
     "css_variables",
     "jsonls",
+    "sourcekit",
     -- "ty",
     "pyright",
     -- "ts_ls",
