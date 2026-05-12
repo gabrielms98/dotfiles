@@ -7,6 +7,7 @@
   "copilot.lua": { "branch": "master", "commit": "ad7e729e9a6348f7da482be0271d452dbc4c8e2c" },
   "fff.nvim": { "branch": "main", "commit": "29e6480ea011351fe468fdec3ee01a4ff1d760cf" },
   "fidget.nvim": { "branch": "main", "commit": "0ba1e16d07627532b6cae915cc992ecac249fb97" },
+  "firenvim": { "branch": "master", "commit": "ab0e51bfa4e01191d0bfd1eee15388ac816e702e" },
   "friendly-snippets": { "branch": "main", "commit": "6cd7280adead7f586db6fccbd15d2cac7e2188b9" },
   "gitsigns.nvim": { "branch": "main", "commit": "db486b42299b2e3f5831809617af21becf268a39" },
   "guess-indent.nvim": { "branch": "main", "commit": "84a4987ff36798c2fc1169cbaff67960aed9776f" },
