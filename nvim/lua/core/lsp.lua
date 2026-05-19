@@ -129,8 +129,8 @@ vim.lsp.enable({
     "css_variables",
     "jsonls",
     "sourcekit",
-    -- "ty",
-    "pyright",
+    "ty",
+    -- "pyright",
     -- "ts_ls",
     -- "tsgo"
 })

@@ -7,6 +7,7 @@ return {
     "mfussenegger/nvim-dap-python",
     {
       "microsoft/vscode-js-debug",
+      tag = "v1.117.0",
       opt = true,
       -- Build dapDebugServer (accepts port as argv; standard-compliant since 1.77, no nvim-dap-vscode-js needed)
       build = "npm install --legacy-peer-deps && npx gulp dapDebugServer && mv dist out",
