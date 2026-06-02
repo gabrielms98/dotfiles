@@ -18,7 +18,7 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       typescript = { 'prettier', 'eslint_d', stop_after_first = true },
-      python = { 'isort', 'black' },
+      python = { 'ruff_fix', 'ruff_organize_imports', 'ruff_format' },
       javascript = { 'prettier', stop_after_first = true },
       htmlangular = { 'prettier', stop_after_first = true },
       html = { 'prettier', stop_after_first = true },

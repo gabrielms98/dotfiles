@@ -24,7 +24,7 @@ return {
         layout_strategy = "bottom_pane",
         layout_config = {
           height = 0.4,
-          prompt_position = "top",
+          prompt_position = "bottom",
           preview_width = 0.35,
         },
         borderchars = {

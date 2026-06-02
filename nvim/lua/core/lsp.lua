@@ -33,7 +33,12 @@ vim.lsp.config('angularls', {
 vim.lsp.config('ty', {
     settings = {
         ty = {
-            diagnosticMode = 'workspace'
+            diagnosticMode = 'workspace',
+            completions = {
+                -- Suggest symbols from the whole workspace (and add the import)
+                -- without needing the defining file to be open first.
+                autoImport = true,
+            },
         }
     }
 })
@@ -119,6 +124,12 @@ vim.lsp.config('sourcekit', {
     },
 })
 
+vim.lsp.config('ruff', {
+    cmd = { 'ruff', 'server' },
+    filetypes = { 'python' },
+    root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
+})
+
 vim.lsp.enable({
     "lua_ls",
     "angularls",
@@ -129,6 +140,7 @@ vim.lsp.enable({
     "css_variables",
     "jsonls",
     "sourcekit",
+    "ruff",
     "ty",
     -- "pyright",
     -- "ts_ls",
