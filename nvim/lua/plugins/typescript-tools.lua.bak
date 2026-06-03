@@ -3,7 +3,7 @@ return {
   dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   opts = {
     settings = {
-      tsserver_max_memory = "4096",
+      tsserver_max_memory = "2048", -- 2GB
       -- Prefer path aliases (e.g. @scope/lib) over relative paths for Nx @nx/enforce-module-boundaries
       tsserver_file_preferences = {
         importModuleSpecifierPreference = "project-relative",

@@ -65,6 +65,26 @@ local function ts_organize_imports()
   ts_apply_action_by_kind("source.organizeImports.ts")
 end
 
+-- tsgo (typescript-go) uses the generic LSP source action kinds, not the
+-- ts_ls ".ts"-suffixed ones. It advertises:
+--   source.organizeImports / source.removeUnusedImports / source.sortImports / source.fixAll
+-- tsgo has no dedicated "add missing imports" kind; "Add all missing imports"
+-- is bundled into source.fixAll, so that's the Import All equivalent.
+local function tsgo_apply_action_by_kind(kind)
+  vim.lsp.buf.code_action({
+    context = { only = { kind }, diagnostics = {} },
+    apply = true,
+  })
+end
+
+local function tsgo_organize_imports()
+  tsgo_apply_action_by_kind("source.organizeImports")
+end
+
+local function tsgo_import_all()
+  tsgo_apply_action_by_kind("source.fixAll")
+end
+
 api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
@@ -80,6 +100,9 @@ api.nvim_create_autocmd("LspAttach", {
     elseif client and client.name == "typescript-tools" then
       map("gs", "<cmd>TSToolsOrganizeImports<CR>", "Organize Imports")
       map("gi", "<cmd>TSToolsAddMissingImports<CR>", "Import All")
+    elseif client and client.name == "tsgo" then
+      map("gs", tsgo_organize_imports, "Organize Imports")
+      map("gi", tsgo_import_all, "Import All")
     end
 
     map("<leader>e", vim.diagnostic.open_float, "Open Diagnostic Float")

@@ -25,7 +25,12 @@ return {
         layout_config = {
           height = 0.4,
           prompt_position = "bottom",
-          preview_width = 0.35,
+          -- preview_width is only valid for the horizontal strategy; keeping it
+          -- at the top level leaks it into center/bottom_pane and crashes the
+          -- ui-select (code action) picker, which uses the center strategy.
+          horizontal = {
+            preview_width = 0.35,
+          },
         },
         borderchars = {
           prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
