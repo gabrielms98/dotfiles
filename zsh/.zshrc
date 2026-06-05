@@ -114,6 +114,7 @@ alias ls="eza --icons"
 alias ps="procs"
 export HISTTIMEFORMAT="%d/%m/%y %T "
 alias lg="lazygit"
+alias gdd="git fetch --prune && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D"
 
 ENV_FILE="$HOME/.config/env.sh"
 [[ -f "$ENV_FILE" ]] && source "$ENV_FILE"
