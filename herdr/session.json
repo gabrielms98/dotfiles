@@ -1,0 +1,118 @@
+{
+  "version": 3,
+  "workspaces": [
+    {
+      "id": "wK",
+      "custom_name": "lexyta",
+      "identity_cwd": "/Users/gabrielms/Documents/lexyta/frontend",
+      "public_pane_numbers": {
+        "2": 2,
+        "3": 3,
+        "1": 1
+      },
+      "next_public_pane_number": 6,
+      "public_tab_numbers": [
+        1,
+        2,
+        3
+      ],
+      "next_public_tab_number": 4,
+      "tabs": [
+        {
+          "custom_name": "frontend",
+          "layout": {
+            "Pane": 1
+          },
+          "panes": {
+            "1": {
+              "cwd": "/Users/gabrielms/Documents/lexyta/frontend"
+            }
+          },
+          "zoomed": false,
+          "focused": 1,
+          "root_pane": 1
+        },
+        {
+          "custom_name": "opencode",
+          "layout": {
+            "Pane": 2
+          },
+          "panes": {
+            "2": {
+              "cwd": "/Users/gabrielms/Documents/lexyta"
+            }
+          },
+          "zoomed": false,
+          "focused": 2,
+          "root_pane": 2
+        },
+        {
+          "custom_name": "lms-backend",
+          "layout": {
+            "Pane": 3
+          },
+          "panes": {
+            "3": {
+              "cwd": "/Users/gabrielms/Documents/lexyta/frontend"
+            }
+          },
+          "zoomed": false,
+          "focused": 3,
+          "root_pane": 3
+        }
+      ],
+      "active_tab": 0
+    },
+    {
+      "id": "wN",
+      "custom_name": "config",
+      "identity_cwd": "/Users/gabrielms/.config",
+      "public_pane_numbers": {
+        "7": 2,
+        "6": 1
+      },
+      "next_public_pane_number": 3,
+      "public_tab_numbers": [
+        1,
+        2
+      ],
+      "next_public_tab_number": 3,
+      "tabs": [
+        {
+          "custom_name": null,
+          "layout": {
+            "Pane": 6
+          },
+          "panes": {
+            "6": {
+              "cwd": "/Users/gabrielms/.config"
+            }
+          },
+          "zoomed": false,
+          "focused": 6,
+          "root_pane": 6
+        },
+        {
+          "custom_name": "ai",
+          "layout": {
+            "Pane": 7
+          },
+          "panes": {
+            "7": {
+              "cwd": "/Users/gabrielms/.config"
+            }
+          },
+          "zoomed": false,
+          "focused": 7,
+          "root_pane": 7
+        }
+      ],
+      "active_tab": 1
+    }
+  ],
+  "active": 1,
+  "selected": 1,
+  "sidebar_width": 26,
+  "sidebar_section_split": 0.5,
+  "collapsed_space_keys": []
+}

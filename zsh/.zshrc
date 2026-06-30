@@ -140,3 +140,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # Added for psycopg2 source builds (libpq is keg-only)
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# opencode
+export PATH=/Users/gabrielms/.opencode/bin:$PATH

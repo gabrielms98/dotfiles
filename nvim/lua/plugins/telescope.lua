@@ -57,7 +57,7 @@ return {
     pcall(require("telescope").load_extension, "ui-select")
 
     local builtin = require("telescope.builtin")
-    vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Find files" })
+    -- vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Find files" })
     vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
     vim.keymap.set("n", "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
     vim.keymap.set("n", "<leader>l", function() builtin.diagnostics({ path_display = { "tail" }, bufnr = 0 }) end,
