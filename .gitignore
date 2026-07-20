@@ -16,3 +16,6 @@ node_modules/
 .DS_Store
 zsh/*
 !zsh/.zshrc
+
+# tmux TPM plugins (managed by TPM)
+tmux/plugins/
