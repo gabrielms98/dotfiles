@@ -144,5 +144,8 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 # opencode
 export PATH=/Users/gabrielms/.opencode/bin:$PATH
 
+# .NET Core SDK tools
+export PATH="$HOME/.dotnet/tools:$PATH"
+
 # zoxide (smarter cd + frecency source for tmux-sessionx)
 eval "$(zoxide init zsh)"

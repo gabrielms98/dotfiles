@@ -1,6 +1,11 @@
 {
+    "runtime.version": "LuaJIT",
+    "diagnostics.globals": [
+        "vim"
+    ],
     "diagnostics.disable": [
         "need-check-nil",
         "missing-parameter"
-    ]
+    ],
+    "workspace.checkThirdParty": false
 }
