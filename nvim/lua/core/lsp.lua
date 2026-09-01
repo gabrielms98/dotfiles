@@ -226,7 +226,7 @@ vim.lsp.handlers['textDocument/definition'] = function(err, result, ctx, config)
     end
 
     local locations = result
-    if not vim.tbl_islist(locations) then
+    if not vim.islist(locations) then
         locations = { locations }
     end
 

@@ -115,6 +115,7 @@ alias ps="procs"
 export HISTTIMEFORMAT="%d/%m/%y %T "
 alias lg="lazygit"
 alias gdd="git fetch --prune && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D"
+alias rm="rmtrash"
 
 ENV_FILE="$HOME/.config/env.sh"
 [[ -f "$ENV_FILE" ]] && source "$ENV_FILE"

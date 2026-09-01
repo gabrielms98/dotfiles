@@ -19,7 +19,7 @@ api.nvim_create_autocmd("FileType", {
 -- highlight on yank
 api.nvim_create_autocmd("TextYankPost", {
   callback = function()
-    vim.highlight.on_yank()
+    (vim.hl.hl_op or vim.hl.on_yank)()
   end
 })
 
