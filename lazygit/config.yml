@@ -4,7 +4,7 @@ gui:
       - reverse
 
 git:
-  paging:
-    pager: delta --dark --paging=never
-    colorArg: never
-    externalDiffCommand: difft --color=always
+  diffRenderers:
+    - command: delta --dark --paging=never
+      colorArg: never
+      externalDiffCommand: difft --color=always

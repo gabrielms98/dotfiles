@@ -32,7 +32,8 @@ brew install \
     neofetch \
     pyenv \
     nvm \
-    pnpm
+    pnpm \ 
+    tree-sitter-cli
 
 # Install oh-my-zsh if not already installed
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
