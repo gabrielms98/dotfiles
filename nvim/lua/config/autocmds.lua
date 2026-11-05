@@ -100,7 +100,7 @@ api.nvim_create_autocmd("LspAttach", {
     elseif client and client.name == "typescript-tools" then
       map("gs", "<cmd>TSToolsOrganizeImports<CR>", "Organize Imports")
       map("gi", "<cmd>TSToolsAddMissingImports<CR>", "Import All")
-    elseif client and client.name == "tsgo" then
+    elseif client and client.name == "tsc" then
       map("gs", tsgo_organize_imports, "Organize Imports")
       map("gi", tsgo_import_all, "Import All")
     end
