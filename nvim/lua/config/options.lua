@@ -1,69 +1,90 @@
-vim.hl = vim.highlight
-vim.g.mapleader = " "                                   -- change leader to a space
-vim.g.maplocalleader = " "                              -- change localleader to a space
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-vim.g.loaded_netrw = 1                                  -- disable netrw
-vim.g.loaded_netrwPlugin = 1                            --  disable netrw
+-- oil.nvim browses directories
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
-vim.opt.incsearch = true                                -- make search act like search in modern browsers
-vim.opt.backup = false                                  -- creates a backup file
-vim.opt.clipboard = "unnamedplus"                       -- allows neovim to access the system clipboard
-vim.opt.cmdheight = 1                                   -- more space in the neovim command line for displaying messages
-vim.opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
-vim.opt.conceallevel = 0                                -- so that `` is visible in markdown files
-vim.opt.fileencoding = "utf-8"                          -- the encoding written to a file
-vim.opt.hlsearch = true                                 -- highlight all matches on previous search pattern
-vim.opt.ignorecase = true                               -- ignore case in search patterns
-vim.opt.mouse = "a"                                     -- allow the mouse to be used in neovim
-vim.opt.showmode = true                                 -- we don't need to see things like -- INSERT -- anymore
-vim.opt.showtabline = 0                                 -- always show tabs
-vim.opt.smartcase = true                                -- smart case
-vim.opt.smartindent = true                              -- make indenting smarter again
-vim.opt.splitbelow = true                               -- force all horizontal splits to go below current window
-vim.opt.splitright = true                               -- force all vertical splits to go to the right of current window
-vim.opt.swapfile = false                                -- creates a swapfile
-vim.opt.termguicolors = true                            -- set term gui colors (most terminals support this)
-vim.opt.timeoutlen = 1000                               -- time to wait for a mapped sequence to complete (in milliseconds)
-vim.opt.undofile = true                                 -- enable persistent undo
-vim.opt.updatetime = 250                                -- faster completion (4000ms default)
-vim.opt.writebackup = false                             -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-vim.opt.expandtab = true                                -- convert tabs to spaces
-vim.opt.shiftwidth = 2                                  -- the number of spaces inserted for each indentation
-vim.opt.cursorline = true                              -- highlight the current line
-vim.opt.number = true                                   -- set numbered lines
-vim.opt.breakindent = true                              -- wrap lines with indent
-vim.opt.relativenumber = true                           -- set relative numbered lines
-vim.opt.numberwidth = 4                                 -- set number column width to 2 {default 4}
-vim.opt.signcolumn = "yes:1"                                                 --  show the sign column, otherwise it would shift the text each time
-vim.opt.wrap = true                                    -- display lines as one long line
-vim.opt.scrolloff = 8                                   -- Makes sure there are always eight lines of context
-vim.opt.showcmd = false           -- Don't show the command in the last line
-vim.opt.ruler = true              -- Don't show the ruler
-vim.opt.guifont = "GeistMono NF:h17" -- the font used in graphical neovim applications
-vim.opt.title = true              -- set the title of window to the value of the titlestring
-vim.opt.confirm = true            -- confirm to save changes before exiting modified buffer
-vim.opt.fillchars = { eob = " " } -- change the character at the end of buffer
-vim.opt.winborder = "none" -- solid
+local o = vim.opt
 
-vim.opt.guicursor = ""                          -- set the cursor to be a vertical bar
+-- Editing
+o.clipboard = "unnamedplus"
+o.expandtab = true
+o.shiftwidth = 2
+o.smartindent = true
+o.breakindent = true
+o.wrap = true
+o.iskeyword:append("-") -- "foo-bar" is one word for w, *, ciw...
+o.undofile = true
+o.swapfile = false
+o.backup = false
+o.writebackup = false
+o.confirm = true
+o.fileencoding = "utf-8"
+o.mouse = "a"
 
--- vim.opt.cursorlineopt = "number"              -- set the cursorline
--- vim.opt.tabstop = 2                           -- insert 2 spaces for a tab
--- vim.opt.laststatus = 0 -- Always display the status line
+-- Search
+o.ignorecase = true
+o.smartcase = true
+o.hlsearch = true
+o.incsearch = true
 
-vim.filetype.add({
-    extension = {
-        env = "dotenv",
+-- UI
+o.termguicolors = true
+o.number = true
+o.relativenumber = true
+o.numberwidth = 4
+o.cursorline = true
+o.signcolumn = "yes:1"
+o.scrolloff = 8
+o.splitbelow = true
+o.splitright = true
+o.showtabline = 0
+o.showmode = true
+o.showcmd = false
+o.ruler = true
+o.title = true
+o.cmdheight = 1
+o.fillchars = { eob = " " }
+o.winborder = "none"
+o.guicursor = ""
+o.guifont = "GeistMono NF:h17"
+o.conceallevel = 0
+o.pumheight = 12
+
+-- Timing
+o.timeoutlen = 1000
+o.updatetime = 250
+
+-- Completion (native). Buffers without an LSP get keyword autocompletion;
+-- LSP buffers switch to vim.lsp.completion autotrigger (see config/lsp.lua).
+o.autocomplete = true
+o.complete = ".^5,w^5,b^5"
+o.completeopt = { "menuone", "noselect", "popup", "fuzzy" }
+
+-- ui2: native floating cmdline + messages (no "Press ENTER")
+require("vim._core.ui2").enable({
+  msg = {
+    targets = {
+      default = "msg",
+      emsg = "pager",
+      echoerr = "pager",
+      lua_error = "pager",
+      rpc_error = "pager",
+      list_cmd = "pager",
+      shell_out = "pager",
+      shell_err = "pager",
+      verbose = "pager",
+      search_count = "cmd",
+      typed_cmd = "cmd",
+      wildlist = "cmd",
+      confirm = "cmd",
     },
-    filename = {
-        [".env"] = "dotenv",
-        ["env"] = "dotenv",
-    },
-    pattern = {
-        ["[jt]sconfig.*.json"] = "jsonc",
-        ["%.env%.[%w_.-]+"] = "dotenv",
-    },
+    msg = { height = 0.3 },
+    pager = { height = 0.5 },
+  },
 })
+o.messagesopt = "hit-enter,history:1000,progress:c,timeout:4000"
 
-vim.api.nvim_create_user_command('Vex', 'vsplit', {})
-vim.api.nvim_create_user_command('Sex', 'split', {})
+vim.api.nvim_create_user_command("Vex", "vsplit", {})
+vim.api.nvim_create_user_command("Sex", "split", {})

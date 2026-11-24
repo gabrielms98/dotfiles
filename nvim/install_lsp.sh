@@ -13,3 +13,5 @@ npm install -g @vtsls/language-server # vtsls
 pip install black # python formatter
 pip install "python-lsp-server[all]"
 npm i -g vscode-langservers-extracted
+
+npm install -g @github/copilot-language-server # copilot (native inline completion)
