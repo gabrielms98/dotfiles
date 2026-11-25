@@ -160,7 +160,8 @@ on-mode-changed = []
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
 
-    alt-f = '''exec-and-forget osascript -e '
+    alt-f = 'exec-and-forget ~/.config/aerospace/finder-here.sh'
+    alt-shift-f = '''exec-and-forget osascript -e '
 tell application "Finder"
     make new Finder window
     activate
